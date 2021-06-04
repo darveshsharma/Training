@@ -10,3 +10,6 @@ git push -u origin main
 git rm "filename"
 git commit -m "Deleted the file from the git repository"
 git push
+#branch checkout and merging
+git checkout"branch_name"
+git merge "branch_name"
