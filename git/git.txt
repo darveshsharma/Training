@@ -1,7 +1,12 @@
+#adding a file in a repo
 echo "# Training" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/darveshsharma/Training.git
+git remote add origin "repository address"
 git push -u origin main
+#removing a file/folder
+git rm "filename"
+git commit -m "Deleted the file from the git repository"
+git push
