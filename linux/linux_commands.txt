@@ -64,3 +64,18 @@ mv filename directory_name
 wc filename
 wc -l(counts the line)
 
+17) chmod- Stand for change mode. the "chmod" command is used to change the access mode of a file.
+
+18)diff- it allows you to compare two files line by line.
+	->it can also compare the contents of directories.
+
+19)free- it tells you how much free RAM memory do i have available on my Linux system.
+	is there enough free memory to install and run new applications?
+
+20)groups- it tells you the group name of which you belong.
+
+21)gzip- Gzip is one of the most popular compression algorithms that allows you to reduce the size of a file and keep the original file mode, ownership.
+
+22)netstat- This command can be used to list our all the network(socket)connections on a system.
+
+23)rsync- Stand for "remote synchronisation". it efficiently sync files and directories between two hosts or machines.
