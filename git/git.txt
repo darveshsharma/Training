@@ -21,3 +21,7 @@ git merge "branch_name"
 git branch -d <branch_name>#simple delete 
 git branch -D <branch_name>#force delete
 git push origin --delete <branch_name>
+#gitignore 
+touch .gitignore
+git rm --cached FILENAME
+git config --global core.excludesfile ~/.gitignore_global
