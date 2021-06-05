@@ -1,3 +1,8 @@
+#checking status
+git status #checking the branch
+git branch #list all local branches
+git branch -r #list all remote branches
+git branch -a #list all branches local and remote both
 #adding a file in a repo
 echo "# Training" >> README.md
 git init
