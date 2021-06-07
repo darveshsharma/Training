@@ -1,0 +1,16 @@
+Things to cover in database:
+1. Installation of Postgres
+2. Datatypes of Postgres
+3. Create database
+4. List a database
+5. Deleting a database
+6. Create a table
+7. Delete database
+8. Modify database
+9. List all table
+10. Schema of table
+11. Querying a database, nested queries
+12. Primary Key, foreign key, Unique key
+13. Inbuilt methods Min, Max, avg etc
+14. Limit. group by,  order by
+15. Joins: inner join outer join
