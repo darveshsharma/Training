@@ -27,6 +27,26 @@ INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
 VALUES (value1, value2, value3,...valueN);
 #Select Query:
 SELECT column1, column2, columnN FROM table_name;
+#Update Query:
 UPDATE table_name SET column1 = value1, column2 = value2,... 
 WHERE condition;
+#Delete Query:
 DELETE FROM table_name WHERE some_condition;
+#Like Query:
+SELECT FROM table_name
+WHERE column LIKE 'XXXX%'
+#Limit Query:
+SELECT column1, column2, columnN
+FROM table_name
+LIMIT [no of rows]
+#Order By Query:
+SELECT column-list
+FROM table_name
+[WHERE condition]
+[ORDER BY column1, column2, .. columnN] [ASC | DESC];
+#Group By Query:
+SELECT column-list
+FROM table_name
+WHERE [ conditions ]
+GROUP BY column1, column2....columnN
+ORDER BY column2, column2....columnN
