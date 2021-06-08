@@ -1,0 +1,32 @@
+#SQL commands
+(DDL):
+createdb [option...] [dbname [description]]
+DROP DATABASE [ IF EXISTS ] name
+ALTER TABLE table_name
+              ADD (Columnname_1  datatype,
+              Columnname_2  datatype,
+              …
+              Columnname_n  datatype);
+TRUNCATE TABLE  table_name;
+table_name: Name of the table to be truncated.
+#connect to your database:
+\c databasename;
+#Creating table:
+CREATE TABLE table_name(
+   column1 datatype,
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype,
+   PRIMARY KEY( one or more columns )
+);
+#Droping table
+DROP TABLE table_name;
+#Insert Query:
+INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
+VALUES (value1, value2, value3,...valueN);
+#Select Query:
+SELECT column1, column2, columnN FROM table_name;
+UPDATE table_name SET column1 = value1, column2 = value2,... 
+WHERE condition;
+DELETE FROM table_name WHERE some_condition;

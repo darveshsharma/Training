@@ -6,25 +6,3 @@ ls /etc/postgresql/9.5/main/
 sudo su postgres
 psql
 ALTER USER postgres with password "enter password";
-#SQL commands
-(DDL):
-createdb [option...] [dbname [description]]
-DROP DATABASE [ IF EXISTS ] name
-#connect to your database:
-\c databasename;
-#Creating table:
-CREATE TABLE table_name(
-   column1 datatype,
-   column2 datatype,
-   column3 datatype,
-   .....
-   columnN datatype,
-   PRIMARY KEY( one or more columns )
-);
-#Droping table
-DROP TABLE table_name;
-#Insert Query:
-INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
-VALUES (value1, value2, value3,...valueN);
-#Select Query:
-SELECT column1, column2, columnN FROM table_name;
