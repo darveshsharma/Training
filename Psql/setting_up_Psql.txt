@@ -1,5 +1,5 @@
 #Installing the psql(using commands):
-sudo apt-get install postgresql postgresql-clontrib
+sudo apt-get install postgresql postgresql-contrib
 #Checking the installation done:
 ls /etc/postgresql/9.5/main/
 #starting the Psql:
