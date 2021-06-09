@@ -1,5 +1,5 @@
 starting the practice of Psql 
-!. Creating table Product_price
+1. Creating table Product_price
 product=# create table product_price(name varchar(20), price int, category_id int, category varchar(20));
 2. Checking the table
 product=# select * from product_price;
@@ -160,3 +160,18 @@ group by b.name,i.stock,p.price;
  milk   |   200 |        120 |    25 |         80 |             3000 |             2000 |        5000
  ghee   |   500 |        200 |   500 |        300 |           100000 |           150000 |      250000
 (3 rows)
+
+17. using age function for finding time period
+product=# select name,age(dop) as time from inventory;
+   name   |          time           
+----------+-------------------------
+ milk     | 5 years 5 mons 23 days
+ curd     | 5 years 5 mons 21 days
+ paneer   | 5 mons 21 days
+ ghee     | 2 years 5 mons 16 days
+ pulse    | 10 years 5 mons 20 days
+ handwash | 2 years 7 mons 18 days
+ chips    | 10 years 5 mons 19 days
+ phenyl   | 10 years 6 mons 19 days
+ broom    | 1 year 5 mons 20 days
+(9 rows)
