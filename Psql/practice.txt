@@ -1,1 +1,162 @@
 starting the practice of Psql 
+!. Creating table Product_price
+product=# create table product_price(name varchar(20), price int, category_id int, category varchar(20));
+2. Checking the table
+product=# select * from product_price;
+ name | price | category_id | category 
+------+-------+-------------+----------
+(0 rows)
+3. Inserting the values
+insert into product_price values('milk',25,1,'dairy')
+;
+INSERT 0 1
+4.checking the table with changes
+product=# select * from product_price
+product-# ;
+   name   | price | category_id | category 
+----------+-------+-------------+----------
+ milk     |    25 |           1 | dairy
+ curd     |    10 |           1 | dairy
+ paneer   |   220 |           1 | dairy
+ ghee     |   500 |           1 | dairy
+ pulse    |   120 |           2 | grocery
+ chips    |    10 |           2 | grocery
+ chips    |    10 |           2 | grocery
+ handwash |    50 |           3 | sanitary
+ phenyl   |    60 |           3 | sanitary
+ broom    |    20 |           3 | sanitary
+
+5.using average function,group by and order by
+product=# select category,avg(price) as "avg" 
+from product_price
+group by category
+order by avg;
+ category |         avg          
+----------+----------------------
+ sanitary |  43.3333333333333333
+ grocery  |  46.6666666666666667
+ dairy    | 188.7500000000000000
+(3 rows)
+
+6.Using sum
+product=# select category,sum(price) as "sum" 
+from product_price
+group by category
+order by sum;
+ category | sum 
+----------+-----
+ sanitary | 130
+ grocery  | 140
+ dairy    | 755
+(3 rows)
+
+7.using count
+product=# select category,count(price) as "cnt" 
+from product_price
+group by category
+order by cnt;
+ category | cnt 
+----------+-----
+ sanitary |   3
+ grocery  |   3
+ dairy    |   4
+(3 rows)
+
+8.Using delete from table
+product=# delete from product_price
+product-# where name='chips';
+DELETE 2
+
+9.Creating another table
+product=# create table inventory(name varchar(20),stock int, category_id int,dop date)
+product-# ;
+CREATE TABLE
+product=# select * from inventory;
+ name | stock | category_id | dop 
+------+-------+-------------+-----
+(0 rows)
+
+10.adding or inserting values in table 2
+product=# insert into inventory values('curd',400,1,DATE '2015-12-19'),('paneer',450,1,DATE '2020-12-19');
+INSERT 0 2
+product=# select * from inventory;
+  name  | stock | category_id |    dop     
+--------+-------+-------------+------------
+ milk   |   200 |           1 | 2015-12-17
+ curd   |   400 |           1 | 2015-12-19
+ paneer |   450 |           1 | 2020-12-19
+(3 rows)
+
+11.using inner join between 2 tables
+product=# select inventory.name,stock from inventory
+inner join product_price on inventory.name = product_price.name
+where product_price.price >200
+;
+  name  | stock 
+--------+-------
+ paneer |   450
+ ghee   |   500
+(2 rows)
+
+12. join practice
+product=# select inventory.name,stock,product_price.price from inventory
+inner join product_price on inventory.name = product_price.name
+where product_price.price <200 and inventory.stock >100
+;
+   name   | stock | price 
+----------+-------+-------
+ milk     |   200 |    25
+ curd     |   400 |    10
+ pulse    |   550 |   120
+ handwash |  1000 |    50
+ chips    |   500 |    10
+ broom    |   300 |    20
+(6 rows)
+
+13.using date_part to find age
+product=# select name,date_part('year',CURRENT_DATE)-date_part('year',dop) as time from inventory;
+   name   | time 
+----------+------
+ milk     |    6
+ curd     |    6
+ paneer   |    1
+ ghee     |    3
+ pulse    |   11
+ handwash |    3
+ chips    |   11
+ phenyl   |   11
+ broom    |    2
+(9 rows)
+
+14.making another table
+product=# create table buy_sell(name varchar(20),dos date,nip int);
+CREATE TABLE
+
+15.inserting values
+product=# insert into buy_sell values('paneer',DATE '2021-02-19',200),('milk',DATE '2021-02-06',100),('milk',DATE '2021-02-10',20),('ghee',DATE '2021-02-05',200);
+INSERT 0 4
+product=# select * from buy_sell;
+  name  |    dos     | nip 
+--------+------------+-----
+ paneer | 2021-02-19 | 200
+ milk   | 2021-02-06 | 100
+ milk   | 2021-02-10 |  20
+ ghee   | 2021-02-05 | 200
+(4 rows)
+
+
+16.inner join between 3 tables
+
+product=# select b.name,i.stock,sum(nip)as total_sold,p.price,(i.stock-sum(nip)) as total_left ,(sum(nip)*p.price) as total_sold_price,((i.stock-sum(nip))*p.price) as total_left_price,(i.stock*p.price) as total_price 
+from buy_sell as b
+inner join inventory as i 
+on b.name=i.name
+inner join  product_price as p
+on  b.name=p.name
+group by b.name,i.stock,p.price;
+  name  | stock | total_sold | price | total_left | total_sold_price | total_left_price | total_price 
+--------+-------+------------+-------+------------+------------------+------------------+-------------
+ paneer |   450 |        200 |   220 |        250 |            44000 |            55000 |       99000
+ milk   |   200 |        120 |    25 |         80 |             3000 |             2000 |        5000
+ ghee   |   500 |        200 |   500 |        300 |           100000 |           150000 |      250000
+(3 rows)
