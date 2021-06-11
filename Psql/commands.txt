@@ -64,3 +64,5 @@ SELECT ... FROM table1 LEFT OUTER JOIN table2 ON conditional_expression
 SELECT ... FROM table1 RIGHT OUTER JOIN table2 ON conditional_expression 
 5.The Full Outer Join
 SELECT ... FROM table1 FULL OUTER JOIN table2 ON conditional_expression
+#dumping the data
+pg_dump -h localhost mydb >/tmp/tempfile
