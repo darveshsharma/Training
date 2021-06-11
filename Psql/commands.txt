@@ -64,6 +64,10 @@ SELECT ... FROM table1 LEFT OUTER JOIN table2 ON conditional_expression
 SELECT ... FROM table1 RIGHT OUTER JOIN table2 ON conditional_expression 
 5.The Full Outer Join
 SELECT ... FROM table1 FULL OUTER JOIN table2 ON conditional_expression
+#Auto increment
+CREATE TABLE tablename (
+   colname SERIAL
+);
 #Addig subquerries
 SELECT column_name [, column_name ]
 FROM   table1 [, table2 ]
