@@ -1,0 +1,246 @@
+Tables:
+Flight
+
+postgres=# select * from flight
+;
+ flno |  source  | destination | distance | departs  | arrives  |  price   
+------+----------+-------------+----------+----------+----------+----------
+    1 | india    | USA         |   100000 | 13:30:00 | 07:08:00 | 33500000
+    2 | USA      | LA          |    10000 | 13:30:00 | 15:08:00 | 13500000
+    3 | LA       | Honolulu    |    10000 | 13:00:00 | 14:08:00 | 11500000
+    4 | LA       | Honolulu    |    10000 | 14:00:00 | 16:00:00 |  8500000
+    5 | LA       | Chicago     |    12000 | 05:00:00 | 07:00:00 | 10000000
+    6 | Maddison | NY          |    20000 | 15:00:00 | 18:00:00 |   120000
+    8 | Chicago  | NY          |    20000 | 16:30:00 | 18:00:00 |    18000
+    7 | Maddison | Chicago     |    20000 | 15:30:00 | 16:00:00 |    12000
+   10 | Chicago  | LA          |    20000 | 16:30:00 | 17:00:00 |    18000
+   11 | LA       | NY          |    20000 | 17:15:00 | 18:00:00 |    18000
+    9 | Maddison | Chicago     |    20000 | 15:01:00 | 16:00:00 |    12000
+(11 rows)
+
+Aircraft:
+
+postgres=# select * from aircraft
+;
+  aid  |    aname    | cruise_range 
+-------+-------------+--------------
+ 12742 | Airbus-122  |          996
+ 12788 | Vistara-127 |          976
+ 12734 | Boeing-123  |        12960
+ 12735 | Boeing-125  |        12760
+ 12741 | Airbus-121  |        12360
+ 12787 | Vistara-128 |        10560
+ 12786 | Vistara-120 |        10160
+(7 rows)
+
+Certified:
+
+postgres=# select * from certified
+;
+ eid |  aid  
+-----+-------
+ 124 | 12734
+ 122 | 12742
+ 123 | 12735
+ 121 | 12741
+ 124 | 12735
+ 121 | 12742
+ 124 | 12742
+ 124 | 12741
+ 122 | 12788
+ 122 | 12787
+ 122 | 12786
+(11 rows)
+
+Employees:
+
+postgres=# select * from employees
+;
+ eid |  ename  | salary 
+-----+---------+--------
+ 122 | rajesh  |  75000
+ 121 | ramesh  |  80000
+ 125 | sumit   |  50000
+ 126 | raghav  |  80000
+ 124 | prakash | 110000
+ 123 | rakesh  | 101000
+ 127 | deepak  | 100000
+ 128 | shekhar |  90000
+ 127 | deepak  |  99000
+(9 rows)
+
+Queries answers
+
+A.postgres=# select aname as "pilots having salary greater than 80K"from aircraft as a
+inner join certified as c
+on a.aid =c.aid
+inner join employees as e
+on c.eid = e.eid and e.salary > 80000;
+ pilots having salary greater than 80K 
+---------------------------------------
+ Airbus-121
+ Airbus-122
+ Boeing-125
+ Boeing-123
+ Boeing-125
+(5 rows)
+
+B.postgres=# select max(a.cruise_range) as "maximum range", c.eid from aircraft as a
+inner join certified as c
+on a.aid =c.aid
+group by c.eid      
+having count(c.eid)>3;
+ maximum range | eid 
+---------------+-----
+         12960 | 124
+         10560 | 122
+(2 rows)
+
+C.postgres=# select ename from employees as e inner join certified as c on c.eid=e.eid
+cross join flight as f 
+where f.source='LA' and f.destination ='Honolulu' group by ename,e.salary 
+having e.salary<min(f.price);
+  ename  
+---------
+ prakash
+ ramesh
+ rajesh
+ rakesh
+(4 rows)
+
+D.postgres=# select aname,avg(e.salary) from aircraft
+inner join certified as c
+on c.aid =aircraft.aid
+inner join employees as e
+on c.eid = e.eid where cruise_range>1000
+group by aname;
+    aname    |         avg         
+-------------+---------------------
+ Boeing-125  | 105500.000000000000
+ Vistara-128 |  75000.000000000000
+ Vistara-120 |  75000.000000000000
+ Boeing-123  | 110000.000000000000
+ Airbus-121  |  95000.000000000000
+(5 rows)
+
+E.postgres=# select ename from employees as e
+inner join certified as c
+on c.eid =e.eid
+inner join aircraft as a 
+on c.aid = a.aid                        
+where a.aname like 'Boeing%';
+  ename  
+---------
+ prakash
+ prakash
+ rakesh
+(3 rows)
+
+F.elect a.aid from aircraft as a
+cross join flight as f
+where f.source='LA' and f.destination='Chicago'
+and a.cruise_range>f.distance;
+  aid  
+-------
+ 12734
+ 12735
+ 12741
+(3 rows)
+
+G.postgres=# select distinct(concat(source,'-',destination)) as routes from flight as f
+inner join aircraft as a
+on a.cruise_range>f.distance
+inner join certified as c
+on c.aid = a.aid
+inner join employees as e 
+on e.eid = c.eid
+where e.salary > 100000;
+   routes    
+-------------
+ USA-LA
+ LA-Honolulu
+ LA-Chicago
+(3 rows)
+
+H.postgres=# select distinct(ename) from employees as e
+inner join certified as c
+on c.eid=e.eid
+inner join aircraft as a
+on c.aid=a.aid
+where a.aname not like 'Boeing%' and a.cruise_range>3000;
+  ename  
+---------
+ ramesh
+ prakash
+ rajesh
+(3 rows)
+
+I.postgres=# select departs from flight as f 
+where f.arrives='18:00' and f.source= 'Maddison' and f.destination = 'NY'
+union
+select f1.departs from flight f1,flight f2
+where f2.arrives ='18:00' and f1.arrives < f2.departs and f1.source = 'Maddison' and f1.destination =f2.source and f2.destination = 'NY' 
+union
+select f1.departs from flight f1,flight f2, flight f3
+where f1.arrives ='18:00' and f1.arrives < f2.departs and f1.source = 'Maddison' and f1.destination =f2.source and f2.destination =f3.source and f1.arrives < f2.departs and f3.destination = 'NY';
+ departs  
+----------
+ 15:01:00
+ 15:30:00
+ 15:00:00
+(3 rows)
+
+J.postgres=# select( (select avg(salary) from employees as e inner join certified as c on e.eid=c.eid)- (select avg(salary) from employees)) as "avg salary of pilot wrt all employees" ;
+ avg salary of pilot wrt all employees 
+---------------------------------------
+                     3777.777777777778
+(1 row)
+
+K.postgres=# select distinct(ename), salary from employees as e left join certified as c on e.eid = c.eid where c.eid is null and e.salary>(select avg(salary) from employees as e inner join certified as c on e.eid=c.eid)
+postgres-# ;
+ ename  | salary 
+--------+--------
+ deepak |  99000
+ deepak | 100000
+(2 rows)
+
+L.postgres=# select distinct(ename) from employees as e 
+inner join certified as c 
+on c.eid = e.eid
+inner join aircraft as a 
+on a.aid=c.aid
+where a.cruise_range > 1000;
+  ename  
+---------
+ ramesh
+ prakash
+ rakesh
+ rajesh
+(4 rows)
+
+M.postgres=# select distinct(ename) as cont from employees as e
+inner join certified as c
+on c.eid = e.eid
+inner join aircraft as a
+on a.aid=c.aid
+where a.cruise_range > 1000  group by ename having count(a.cruise_range)>1
+;
+  cont   
+---------
+ prakash
+ rajesh
+(2 rows)
+
+N.postgres=# select distinct(ename) from employees as e 
+inner join certified as c 
+on c.eid = e.eid
+inner join aircraft as a 
+on a.aid=c.aid                              
+where a.cruise_range > 1000 and a.aname like 'Boeing%';
+  ename  
+---------
+ rakesh
+ prakash
+(2 rows)
+
+
