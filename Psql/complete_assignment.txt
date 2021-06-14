@@ -190,11 +190,11 @@ where f1.arrives ='18:00' and f1.arrives < f2.departs and f1.source = 'Maddison'
  15:00:00
 (3 rows)
 
-J.postgres=# select( (select avg(salary) from employees as e inner join certified as c on e.eid=c.eid)- (select avg(salary) from employees)) as "avg salary of pilot wrt all employees" ;
+J.postgres=# select( (select avg(distinct(salary)) from employees as e inner join certified as c on e.eid=c.eid)- (select avg(salary) from employees)) as "avg salary of pilot wrt all employees" ;
  avg salary of pilot wrt all employees 
 ---------------------------------------
-                     3777.777777777778
-(1 row)
+                     4277.777777777778
+
 
 K.postgres=# select distinct(ename), salary from employees as e left join certified as c on e.eid = c.eid where c.eid is null and e.salary>(select avg(salary) from employees as e inner join certified as c on e.eid=c.eid)
 postgres-# ;
