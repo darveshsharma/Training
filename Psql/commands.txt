@@ -77,3 +77,5 @@ WHERE  column_name OPERATOR
       [WHERE])
 #dumping method
 pg_dump -h localhost mydb >/tmp/tempfile
+#restoring dump
+psql -d dbname < filename
