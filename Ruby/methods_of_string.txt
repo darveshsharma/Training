@@ -1,0 +1,256 @@
+2.7.3 :006 > s =String.new
+ => "" 
+2.7.3 :007 > s.encoding
+ => #<Encoding:ASCII-8BIT> 
+2.7.3 :008 > s=String.new('name is darvesh{uyau}/\ut
+123\45!@#$%%^^')
+2.7.3 :009 > s.encoding
+ => #<Encoding:UTF-8> 
+2.7.3 :010 > s=String.new(encoding: 'ASCII')
+ => "" 
+2.7.3 :011 > s=String.new('darvesh',encoding: 'ASCII
+')
+ => "darvesh" 
+2.7.3 :012 > s.encoding
+ => #<Encoding:US-ASCII> 
+2.7.3 :022 > s0=String.new('bobby',encoding: 'ASCII')
+ => "bobby" 
+2.7.3 :023 > s1='bobby'.force_encoding('ASCII')
+ => "bobby" 
+2.7.3 :024 > s0.encoding == s1.encoding
+ => true 
+2.7.3 :025 > s=String.new('bobby', encoding: 'UTF-8', capacity: 25)
+ => "bobby"
+2.7.3 :027 > "%06d" % 123
+ => "000123"
+2.7.3 :037 > "Hello! "*3
+ => "Hello! Hello! Hello! " 
+2.7.3 :038 > "Hello from "+ self.to_s
+ => "Hello from main" 
+2.7.3 :046 > "hello\{1010}".force_encoding("UTF-8").ascii_only?
+ => true 
+2.7.3 :047 > "abc\u{6666}".force_encoding("UTF-8").ascii_only?
+ => false 
+2.7.3 :050 > "abc".bytesize
+ => 3 
+2.7.3 :066 > "my name".byteslice(0)
+ => "m" 
+2.7.3 :067 > "my name".byteslice(0,2)
+ => "my" 
+2.7.3 :068 > "my name".byteslice(-1)
+ => "e" 
+2.7.3 :074 > "name".capitalize
+ => "Name" 
+2.7.3 :075 > "NAME".capitalize
+ => "Name" 
+2.7.3 :078 > a="name"
+ => "name" 
+2.7.3 :079 > a.capitalize
+ => "Name" 
+2.7.3 :080 > a
+ => "name" 
+2.7.3 :081 > a.capitalize!
+ => "Name" 
+2.7.3 :082 > a
+ => "Name" 
+2.7.3 :085 > "hello".casecmp("hel")
+ => 1 
+2.7.3 :086 > "hello".casecmp("hello")
+ => 0 
+2.7.3 :087 > "hello".casecmp("hello m")
+ => -1 
+2.7.3 :090 > "hello".casecmp(12)
+ => nil 
+ 2.7.3 :091 > "hello".casecmp?("hel")
+ => false 
+2.7.3 :092 > "hello".casecmp?("hello")
+ => true 
+2.7.3 :093 > "hello".center(4)
+ => "hello" 
+2.7.3 :094 > "hello".center(20)
+ => "       hello        " 
+2.7.3 :095 > "hello".center(20,"yes")
+ => "yesyesyhelloyesyesye" 
+2.7.3 :097 > "hello\r".chomp
+ => "hello" 
+2.7.3 :098 > "hello\n".chomp
+ => "hello" 
+2.7.3 :099 > "hello\n\r".chomp
+ => "hello\n" 
+2.7.3 :100 > "hello\r\n".chomp
+ => "hello" 
+2.7.3 :106 > "hello".chomp("llo")
+ => "he" 
+2.7.3 :107 > "hello".chomp!("llo")
+ => "he" 
+2.7.3 :108 > "hello".chomp!
+ => nil 
+2.7.3 :111 > "string\r\n".chop
+ => "string" 
+2.7.3 :112 > "string\n\r".chop
+ => "string\n" 
+2.7.3 :113 > "string\n".chop
+ => "string" 
+2.7.3 :114 > "string".chop
+ => "strin" 
+2.7.3 :116 > "string".chop
+ => "strin" 
+2.7.3 :117 > "string".chop.chop
+ => "stri" 
+2.7.3 :120 > "string".chop!
+ => "strin" 
+2.7.3 :121 > "".chop!
+ => nil 
+2.7.3 :122 > "x".chop!
+ => "" 
+2.7.3 :123 > "x".chop.chop!
+ => nil 
+2.7.3 :127 > a="abcde"
+ => "abcde" 
+2.7.3 :128 > a.chr
+ => "a" 
+2.7.3 :130 > a.clear
+ => "" 
+ 2.7.3 :134 > a.codepoints
+ => [97, 98, 99, 100, 101] 
+2.7.3 :135 > s='bobby'
+ => "bobby" 
+2.7.3 :136 > s.concat(' is',' darvesh')
+ => "bobby is darvesh" 
+2.7.3 :138 > s.concat(32, 'is',32,'darvesh')
+ => "bobby is darvesh is  darvesh is darvesh" 
+2.7.3 :145 > a="hello my name is darvesh"
+ => "hello my name is darvesh" 
+2.7.3 :146 > a.count( 'a' )
+ => 2 
+2.7.3 :147 > a.count( 'ae' )
+ => 5 
+2.7.3 :148 > a.count( 'lae' )
+ => 7 
+2.7.3 :155 > "bobby".delete "b","bby"
+ => "oy" 
+2.7.3 :159 > "bobbyee".delete "aeiou", "^o"
+ => "bobby" 
+2.7.3 :160 > "bobbyee".delete "aeiou", "^e"
+ => "bbbyee" 
+2.7.3 :161 > "bobbyee".delete "a-m"
+ => "oy" 
+2.7.3 :162 > "bobbyee".delete_prefix("bob")
+ => "byee" 
+2.7.3 :163 > "bobbyee".delete_prefix("yee")
+ => "bobbyee" 
+2.7.3 :164 > "bobbyee".delete_prefix!("bob")
+ => "byee" 
+2.7.3 :165 > "bobbyee".delete_prefix!("yee")
+ => nil 
+2.7.3 :168 > "bobbyee".delete_suffix("yee")
+ => "bobb" 
+2.7.3 :169 > "bobbyee".delete_suffix("bob")
+ => "bobbyee" 
+ 2.7.3 :170 > "bobbyee".delete_suffix!("yee")
+ => "bobb" 
+2.7.3 :171 > "bobbyee".delete_suffix!("bob")
+ => nil 
+2.7.3 :172 > "BoBBy".downcase
+ => "bobby" 
+2.7.3 :173 > "bobby".downcase
+ => "bobby" 
+2.7.3 :174 > "BoBBy".downcase!
+ => "bobby" 
+2.7.3 :175 > "bobby".downcase!
+ => nil 
+2.7.3 :176 > "bobby".dump
+ => "\"bobby\"" 
+2.7.3 :177 > "\\\\\\bobby\\\\".dump
+ => "\"\\\\\\\\\\\\bobby\\\\\\\\\"" 
+2.7.3 :180 > "bobby".each_byte {|c| print c,' '}
+98 111 98 98 121  => "bobby" 
+2.7.3 :187 > "bobby".each_char {|c| print c,' '}
+b o b b y  => "bobby"
+2.7.3 :202 > "hello\nworld".each_line {|s| p s}
+"hello\n"
+"world"
+2.7.3 :205 > "hello\nworld".each_line('l') {|s| p s}
+"hel"
+"l"
+"o\nworl"
+"d"
+2.7.3 :206 > "hello\n\n\nworld".each_line('') {|s| p s}
+"hello\n\n"
+"world"
+2.7.3 :208 > "hello\nworld".each_line(chomp: true) {|s| p s}
+"hello"
+"world"
+2.7.3 :209 > "hello\nworld".each_line('l' ,chomp: true) {|s| p s}
+"he"
+""
+"o\nwor"
+"d"
+2.7.3 :212 > "hello".empty?
+ => false 
+2.7.3 :213 > " ".empty?
+ => false 
+2.7.3 :214 > "".empty?
+ => true 
+2.7.3 :216 > "hello".end_with?("lo")
+ => true 
+2.7.3 :217 > "hello".end_with?("lo","he")
+ => true 
+2.7.3 :220 > "hello".end_with?("mllo","he")
+ => false
+ 2.7.3 :221 > a="hello"
+ => "hello" 
+2.7.3 :222 > a.eql?("hellp")
+ => false 
+2.7.3 :223 > a.eql?("hello")
+ => true 
+ 2.7.3 :224 > "bobby".gsub("a",'b')
+ => "bobby" 
+2.7.3 :225 > "bobby".gsub(/[a]/,'b')
+ => "bobby" 
+2.7.3 :226 > "bobby".gsub(/[b]/,'a')
+ => "aoaay" 
+2.7.3 :227 > "bobby".gsub("b",'a')
+ => "aoaay" 
+2.7.3 :228 > "bobby".gsub(/[b-y]/,'a')
+ => "aaaaa" 
+2.7.3 :229 > "bobby".gsub(/[b-x]/,'a')
+ => "aaaay" 
+2.7.3 :230 > "kahia".hex
+ => 0 
+2.7.3 :231 > "-12354".hex
+ => -74580 
+2.7.3 :232 > "0".hex
+ => 0 
+2.7.3 :233 > "121".hex
+ => 289 
+2.7.3 :236 > "bobby".include? "ob"
+ => true 
+2.7.3 :237 > "bobby".include? "oby"
+ => false 
+ 2.7.3 :238 > "bobby".index('b')
+ => 0 
+ 2.7.3 :241 > "bobby".index('b',1)
+ => 2 
+2.7.3 :242 > a="bobby"
+ => "bobby" 
+2.7.3 :243 > a.replace('Darvesh')
+ => "Darvesh" 
+2.7.3 :244 > a
+ => "Darvesh" 
+2.7.3 :247 > a.insert(1,'aa')
+ => "Daababaarvesh" 
+2.7.3 :251 > a="hello"
+ => "hello" 
+2.7.3 :252 > a[3]="\b"
+ => "\b" 
+2.7.3 :253 > a.inspect
+ => "\"hel\\bo\"" 
+2.7.3 :255 > "koala".intern
+ => :koala 
+2.7.3 :256 > a="cat".to_sym
+ => :cat 
+2.7.3 :257 > a==:cat
+ => true 
+2.7.3 :259 > "hello".length
+ => 5 
