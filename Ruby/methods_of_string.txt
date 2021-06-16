@@ -254,3 +254,133 @@ b o b b y  => "bobby"
  => true 
 2.7.3 :259 > "hello".length
  => 5 
+ => ["hello\n", "world"] 
+2.7.3 :002 > "hello\nworld".lines(chomp: true)
+ => ["hello", "world"] 
+ 2.7.3 :004 > "hello world".lines(' ')
+ => ["hello ", "world"] 
+ 2.7.3 :005 > "hello world".ljust(4)
+ => "hello world" 
+2.7.3 :006 > "hello world".ljust(20)
+ => "hello world         " 
+2.7.3 :007 > "hello world".ljust(20,'really really')
+ => "hello worldreally re" 
+2.7.3 :014 > " hello world".lstrip()
+ => "hello world" 
+2.7.3 :015 > "hello world".lstrip()
+ => "hello world" 
+ 2.7.3 :016 > " hello world".lstrip!
+ => "hello world" 
+2.7.3 :017 > "hello world".lstrip!
+ => nil 
+ 2.7.3 :019 > "hello".match("HELL")
+ => nil 
+2.7.3 :020 > "hello".match("hell")
+ => #<MatchData "hell"> 
+2.7.3 :021 > "hello".match("i")
+ => nil 
+2.7.3 :022 > "hello".match("o")
+ => #<MatchData "o"> 
+2.7.3 :023 > "hello".match("o",4)
+ => #<MatchData "o"> 
+2.7.3 :024 > "hello".match("o",5)
+ => nil 
+2.7.3 :031 > "hello".match(/\D/)
+ => #<MatchData "h"> 
+2.7.3 :032 > "hello".match(/\W/)
+ => nil 
+ 2.7.3 :035 > "hello1".match?(/\D/)
+ => true 
+2.7.3 :036 > "hello1".match?(/\W/)
+ => false 
+2.7.3 :037 > "123456789".succ
+ => "123456790" 
+2.7.3 :038 > "199999999".succ
+ => "200000000" 
+2.7.3 :039 > "darvesh".succ
+ => "darvesi" 
+2.7.3 :040 > "----".succ
+ => "---." 
+2.7.3 :043 > s= 0.chr * 3
+ => "\x00\x00\x00" 
+2.7.3 :044 > s.succ
+ => "\x00\x00\x01" 
+2.7.3 :045 > 255.chr *3
+=> "\xFF\xFF\xFF" 
+2.7.3 :047 > s='zz99zzzz999'
+ => "zz99zzzz999" 
+2.7.3 :048 > s.succ
+ => "aaa00aaaa000" 
+2.7.3 :049 > "123".oct
+ => 83 
+2.7.3 :050 > "255".oct
+ => 173 
+2.7.3 :051 > "badd".oct
+ => 0 
+2.7.3 :052 > "0377badd".oct
+ => 255 
+2.7.3 :053 > "a".ord
+ => 97 
+2.7.3 :055 > "hello".partition("l")
+ => ["he", "l", "lo"] 
+2.7.3 :056 > "hello".partition("x")
+ => ["hello", "", ""] 
+2.7.3 :058 > "hello".partition(/.l/)
+ => ["h", "el", "lo"] 
+ 2.7.3 :059 > "hello".prepend("hi, ")
+ => "hi, hello" 
+2.7.3 :060 > "hello".replace "world"
+=> "world" 
+2.7.3 :061 > "stressed".reverse
+ => "desserts" 
+2.7.3 :062 > "aayush".reverse
+ => "hsuyaa" 
+2.7.3 :063 > "aayush".reverse!
+ => "hsuyaa" 
+2.7.3 :064 > "hello".rindex("l")
+ => 3 
+2.7.3 :065 > "hello".rindex("e")
+ => 1 
+2.7.3 :066 > "hello".rindex("p")
+ => nil 
+2.7.3 :067 > "hello".rindex(/ll/)
+ => 2 
+2.7.3 :068 > "hello".rindex(/o/)
+ => 4 
+2.7.3 :069 > "hello".rindex(/o/,0)
+ => nil 
+2.7.3 :070 > "hello".rindex(/o/,10)
+ => 4 
+2.7.3 :071 > "hello".rindex(/o/,3)
+ => nil 
+2.7.3 :072 > "hello".rindex(/o/,-1)
+ => 4 
+2.7.3 :073 > "hello".rindex(/l/,5)
+ => 3 
+2.7.3 :074 > "hello".rindex(/l/,1)
+ => nil 
+2.7.3 :075 > "hello".rjust(6)
+ => " hello" 
+2.7.3 :076 > "hello".rjust(7," Hi")
+ => " Hhello" 
+2.7.3 :077 > "hello".rjust(9," Hi")
+ => " Hi hello" 
+2.7.3 :078 > "hello".rjust(8,"Hi ")
+ => "Hi hello" 
+2.7.3 :079 > "hello".rjust(8,"Hi ")
+2.7.3 :080 > "Hello".rpartition("l")
+ => ["Hel", "l", "o"] 
+2.7.3 :081 > "Hello".rpartition("")
+ => ["Hello", "", ""] 
+2.7.3 :082 > "Hello".rpartition("x")
+ => ["", "", "Hello"] 
+2.7.3 :083 > "Hello".rpartition(/.l/)
+ => ["He", "ll", "o"] 
+2.7.3 :084 > "Hello      ".rstrip
+ => "Hello" 
+2.7.3 :085 > "   Hello      ".rstrip
+ => "   Hello" 
+2.7.3 :086 > "Hello".rstrip
+ => "Hello" 
+2.7.3 :087 > "Hello".rstrip!
+ => nil 
