@@ -498,3 +498,55 @@ eHll ooWlr=> "Hello World"
 => 532
 >> "HeLLo".swapcase
 => "hEllO"
+>> "123.5ja".to_f
+=> 123.5
+>> "45.5 degrees".to_f
+=> 45.5
+>> "ab".to_f
+=> 0.0
+>> "123.5".to_c
+=> (123.5+0i)
+>> '9.2'.to_r
+=> (46/5)
+>> "22".to_sym
+=> :"22"
+>> "b".to_sym
+=> :b
+>> "hello".tr('el','ip')
+=> "hippo"
+>> "hello".tr('el','io')
+=> "hiooo"
+>> "hello".tr('hl','io')
+=> "ieooo"
+>> "hello".tr!('el','io')
+=> "hiooo"
+>> "hello".tr!('ab','io')
+=> nil
+>> "\"hello \\n ''\"".undump
+=> "hello \n ''"
+>> "a\u0300".unicode_normalize
+=> "à"
+>> "a\u0300".unicode_normalize(:nfc)
+=> "à"
+>> "\u00E0".unicode_normalize(:nfd)
+=> "à"
+>> "abc \0\0abc \0\0".unpack('A6Z6')
+=> ["abc", "abc "]
+>> "abc \0\0".unpack('a3a3') 
+=> ["abc", " \x00\x00"]
+>> "abc \0\0abc \0\0".unpack1('A6Z6')
+=> "abc"
+>> "hEllO".upcase
+=> "HELLO"
+>> "Hello".upcase
+=> "HELLO"
+>> "Hello".upcase!
+=> "HELLO"
+>> "HELLO".upcase!
+=> nil
+>> 'a8'.upto('b6') {|s| print s, ' ' }
+a8 a9 b0 b1 b2 b3 b4 b5 b6 => "a8"
+>> '25'.upto('5') {|s| fail s }
+=> "25"
+>> "\xc2\xa1".force_encoding("UTF-8").valid_encoding?
+=> true
