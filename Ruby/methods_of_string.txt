@@ -1,7 +1,7 @@
 2.7.3 :006 > s =String.new
  => "" 
 2.7.3 :007 > s.encoding
- => #<Encoding:ASCII-8BIT> 
+ => #<Encoding:AII-8BIT> 
 2.7.3 :008 > s=String.new('name is darvesh{uyau}/\ut
 123\45!@#$%%^^')
 2.7.3 :009 > s.encoding
@@ -384,3 +384,117 @@ b o b b y  => "bobby"
  => "Hello" 
 2.7.3 :087 > "Hello".rstrip!
  => nil 
+>> a="Hello World"
+=> "Hello World"
+>> a.scan(/\W+/)
+=> [" "]
+>> a.scan(/\w+/)
+=> ["Hello", "World"]
+>> a="HelloWorld"
+=> "HelloWorld"
+>> a.scan(/\w+/)
+=> ["HelloWorld"]
+>> a.scan(/\w+/)
+=> ["HelloWorld"]
+>> a.scan(/.../)
+=> ["Hel", "loW", "orl"]
+>> a.scan(/../)
+=> ["He", "ll", "oW", "or", "ld"]
+>> a.scan(/./)
+=> ["H", "e", "l", "l", "o", "W", "o", "r", "l", "d"]
+>> a.scan(/(.,.)/)
+=> []
+>> a.scan(/(..)/)
+=> [["He"], ["ll"], ["oW"], ["or"], ["ld"]]
+>> a.scan(/(..)(..)/)
+=> [["He", "ll"], ["oW", "or"]]
+>> a="Hello World"
+=> "Hello World"
+>> a.scan(/\w+/) {|w| print "<<#{w}>>"}
+<<Hello>><<World>>=> "Hello World"
+>> a.scan(/(.)(.)/) {|x,y| print y,x}
+eHll ooWlr=> "Hello World"
+>> a="Hello World"
+=> "Hello World"
+>> a.setbyte(1,2)
+=> 2
+>> a
+=> "H\u0002llo World"
+>> a.length
+=> 11
+>> a
+=> "Hello World"
+>> a.slice!(2)
+>> a
+>> a.slice(2..3)
+=> "lo"
+>> a
+=> "Helo World"
+>> a[1]="e"
+=> "e"
+>> a
+=> "Helo World"
+>> a.slice!(2)
+=> "l"
+>> a.slice!(2..3)
+=> "o "
+>> a.slice!("l")
+=> "l"
+>> a
+=> "HeWord"
+>> a
+=> "this is a string"
+>> a.split
+=> ["this", "is", "a", "string"]
+>> a.split(' ')
+=> ["this", "is", "a", "string"]
+>> a.split(/ /)
+=> ["this", "is", "a", "string"]
+>> a.split(/ /,3)
+=> ["this", "is", "a string"]
+>> a.split(//,3)
+=> ["t", "h", "is is a string"]
+>> a
+=> "hello welcoooooome"
+>> a.squeeze
+=> "helo welcome"
+>> a="helo       world"
+=> "helo       world"
+>> a.squeeze(" ")
+=> "helo world"
+>> a="hello welcoooooome"
+=> "hello welcoooooome"
+>> a.squeeze("m-z")
+=> "hello welcome"
+>> a="helo       world"
+=> "helo       world"
+>> a.squeeze!(" ")
+=> "helo world"
+>> a
+=> "helo world"
+>> "hello".start_with?("he")
+=> true
+>> "hello".start_with?(/H/)
+=> false
+>> "hello".start_with?(/H/i)
+=> true
+>> " hello ".strip
+=> "hello"
+>> " hello\n\n".strip
+=> "hello"
+>> " hello".strip
+=> "hello"
+>> " hello".strip!
+=> "hello"
+>> "hello".strip!
+=> nil
+>> "hello".sub(/[aeiou]/,'*')
+=> "h*llo"
+>> "hello".sub(/([aeiou])/, '<\1>')
+=> "h<e>llo"
+>> "hello".sub!(/([a])/,'</2>')
+=> nil
+>> "hello".sum(n=16)
+=> 532
+>> "HeLLo".swapcase
+=> "hEllO"
