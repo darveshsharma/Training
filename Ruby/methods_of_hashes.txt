@@ -1,0 +1,520 @@
+                                              --*Hashes*--
+                        
+2.7.3 :003 > h={"name": "Darvesh Sharma","Course": "Btech","Branch":"CSE","Rollno":13}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+
+#using function
+2.7.3 :005 > def some_method(hash)
+2.7.3 :006 >   p hash
+2.7.3 :007 > end
+ => :some_method 
+2.7.3 :008 > some_method({"name": "Darvesh Sharma","Course": "Btech","Branch":"CSE","Rollno":13})
+{:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+
+#when last argument called in method is hash then curly braces can be omited
+2.7.3 :009 > some_method(foo: 0, bar: 1, baz: 2) 
+{:foo=>0, :bar=>1, :baz=>2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+#intitialize using class
+2.7.3 :010 > class Dev
+2.7.3 :011 >   attr_accessor :name, :language
+2.7.3 :012 >   def initialize(hash)
+2.7.3 :013 >     self.name = hash[:name]
+2.7.3 :014 >     self.language = hash[:language]
+2.7.3 :015 >   end
+2.7.3 :016 > end
+ => :initialize 
+2.7.3 :017 > matz = Dev.new(name: 'Matz', language: 'Ruby')
+ => #<Dev:0x000055b3846c3f30 @name="Matz", @language="Ruby"> 
+
+#creating Hashes
+2.7.3 :019 > ha=Hash.new
+ => {} 
+2.7.3 :020 > ha=Hash.[]
+ => {} 
+2.7.3 :021 > ha
+ => {} 
+2.7.3 :022 > h={"name": "Darvesh Sharma","Course": "Btech","Branch":"CSE","Rollno":13}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+2.7.3 :023 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+
+
+adding keys and values
+2.7.3 :024 > h[:new]=34
+ => 34 
+2.7.3 :025 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13, :new=>34} 
+2.7.3 :026 > h.delete(:new)
+ => 34 
+
+#deleting values
+2.7.3 :027 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+
+
+#using arrays in hash
+
+2.7.3 :028 > a0 = [ :foo, :bar ]
+ => [:foo, :bar] 
+2.7.3 :029 > a1 = [ :baz, :bat ]
+ => [:baz, :bat] 
+2.7.3 :030 > ha = {a0 => 0, a1 => 1}
+ => {[:foo, :bar]=>0, [:baz, :bat]=>1} 
+2.7.3 :033 > ha.include?(a0)
+ => true 
+2.7.3 :034 > ha[a0]
+ => 0 
+2.7.3 :035 > a0[0]=:bam
+ => :bam 
+2.7.3 :036 > ha.include?(a0)
+ => false 
+2.7.3 :037 > ha[a0]
+ => nil 
+2.7.3 :038 > ha.rehash
+ => {[:bam, :bar]=>0, [:baz, :bat]=>1} 
+2.7.3 :039 > ha.include?(a0)
+ => true 
+2.7.3 :040 > ha[a0]
+ => 0 
+
+#default
+2.7.3 :041 > ha=Hash.new
+ => {} 
+2.7.3 :042 > ha.default
+ => nil 
+2.7.3 :044 > ha=Hash.new(-1)
+ => {} 
+2.7.3 :045 > ha.default
+ => -1 
+2.7.3 :046 > ha.default=0
+ => 0 
+2.7.3 :047 > ha.default
+ => 0 
+2.7.3 :048 > ha
+ => {} 
+
+
+#use of default
+2.7.3 :049 > count_of_days={"Jan"=>31}
+ => {"Jan"=>31} 
+2.7.3 :050 > count_of_days["jan"]
+ => nil 
+2.7.3 :051 > count_of_days={"jan"=>31}
+ => {"jan"=>31} 
+2.7.3 :052 > count_of_days["jan"]
+ => 31 
+2.7.3 :053 > count_of_days.default
+ => nil 
+2.7.3 :054 > count_of_days["feb"]
+ => nil 
+2.7.3 :055 > count_of_days
+ => {"jan"=>31} 
+2.7.3 :056 > count_of_days.default=0
+ => 0 
+2.7.3 :057 > count_of_days["feb"]
+ => 0 
+2.7.3 :058 > count_of_days
+ => {"jan"=>31} 
+2.7.3 :059 > count_of_days["mar"]
+ => 0 
+2.7.3 :060 > count_of_days.values_at
+ => [] 
+2.7.3 :061 > count_of_days.values_at("jan","feb","mar")
+ => [31, 0, 0] 
+2.7.3 :062 > ha = Hash.new { |hash, key| "Default value for #{key}" }
+ => {} 
+2.7.3 :063 > h.default_proc.class
+ => NilClass 
+2.7.3 :064 > ha.default_proc.class
+ => Proc 
+2.7.3 :065 > h.default_proc = proc { |hash, key| "Default value for #{key.inspect}" }
+ => #<Proc:0x000055b38474f008 (irb):65> 
+2.7.3 :066 > h.default_proc.class
+ => Proc 
+2.7.3 :067 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+2.7.3 :068 > h[:class]
+ => "Default value for :class" 
+2.7.3 :069 > h.include?(:class)
+ => false 
+2.7.3 :070 > synonyms = Hash.new { |hash, key| hash[key] = [] }
+ => {} 
+2.7.3 :071 > synonyms.include?(:hello)
+ => false 
+2.7.3 :073 > synonyms[:hello] <<[:hi]
+ => [[:hi]] 
+2.7.3 :074 > synonyms[:world] <<[:universe]
+ => [[:universe]] 
+2.7.3 :075 > synonyms.keys
+ => [:hello, :world] 
+2.7.3 :076 > synonyms
+ => {:hello=>[[:hi]], :world=>[[:universe]]} 
+2.7.3 :077 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :078 > Hash[h]
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :079 > Hash[ [ [:foo, 0], [:bar, 1] ] ]
+ => {:foo=>0, :bar=>1} 
+2.7.3 :080 > Hash[:foo, 0, :bar, 1]
+ => {:foo=>0, :bar=>1} 
+2.7.3 :081 > h={"name": "Darvesh Sharma","Course": "Btech","Branch":"CSE","Rollno":13}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+2.7.3 :082 > h2={"name": "Darvesh Sharma","Course": "Btech","Branch":"CSE","Rollno":13,"class":32}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13, :class=>32} 
+2.7.3 :084 > h2<h
+ => false 
+2.7.3 :085 > h2>h
+ => true 
+2.7.3 :086 > h>h
+ => false 
+2.7.3 :087 > h>=h
+ => true 
+2.7.3 :088 > h2>=h
+ => true 
+2.7.3 :089 > h2<=h
+ => false 
+
+2.7.3 :092 > h.any?([:name,"darvesh"])
+ => false 
+2.7.3 :093 > h.any?([:name,"Darvesh Sharma"])
+ => true 
+2.7.3 :094 > h.assoc(:name)
+ => [:name, "Darvesh Sharma"] 
+2.7.3 :095 > h.assoc(:marks)
+ => nil 
+
+
+
+2.7.3 :097 > synonyms
+ => {:hello=>[[:hi]], :world=>[[:universe]]} 
+2.7.3 :098 > synonyms.clear
+ => {} 
+2.7.3 :099 > synonyms
+ => {} 
+
+2.7.3 :100 > ha = {foo: 0, bar: nil, baz: 2, bat: nil}
+ => {:foo=>0, :bar=>nil, :baz=>2, :bat=>nil} 
+2.7.3 :101 > ha.compact
+ => {:foo=>0, :baz=>2} 
+2.7.3 :102 > ha
+ => {:foo=>0, :bar=>nil, :baz=>2, :bat=>nil} 
+2.7.3 :103 > ha.compact!
+ => {:foo=>0, :baz=>2} 
+2.7.3 :104 > ha
+ => {:foo=>0, :baz=>2} 
+
+
+2.7.3 :105 > s0 = 'x'
+ => "x" 
+2.7.3 :106 > s1 = 'x'
+ => "x" 
+2.7.3 :107 > ha={}
+ => {} 
+2.7.3 :108 > ha.compare_by_identity? 
+ => false 
+2.7.3 :109 > h[s0]=0
+ => 0 
+2.7.3 :110 > ha[s0]=0
+ => 0 
+2.7.3 :111 > ha[s1]=1
+ => 1 
+2.7.3 :112 > ha
+ => {"x"=>1} 
+
+2.7.3 :116 > ha={}
+ => {} 
+2.7.3 :117 > ha.compare_by_identity 
+ => {} 
+2.7.3 :118 > ha[s0]=0
+ => 0 
+2.7.3 :119 > ha[s1]=1
+ => 1 
+2.7.3 :120 > ha
+ => {"x"=>0, "x"=>1} 
+
+2.7.3 :121 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13, "x"=>0} 
+2.7.3 :122 > h.delete_if {|x,y| y==0}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13} 
+2.7.3 :123 > e =h.delete_if 
+ => #<Enumerator: {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE", :Rollno=>13}:delete_if> 
+2.7.3 :126 > e.each {|x,y| y==13}
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE"} 
+2.7.3 :127 > h
+ => {:name=>"Darvesh Sharma", :Course=>"Btech", :Branch=>"CSE"} 
+2.7.3 :128 > h = {foo: {bar: {baz: 2}}}
+ => {:foo=>{:bar=>{:baz=>2}}} 
+2.7.3 :129 > h.dig(:foo)
+ => {:bar=>{:baz=>2}} 
+2.7.3 :130 > h.dig(:foo, :bar)
+ => {:baz=>2} 
+2.7.3 :131 > h.dig(:foo, :bar, :baz)
+ => 2 
+2.7.3 :132 > h.dig(:foo, :bar, :BAZ)
+ => nil 
+2.7.3 :133 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :134 > h.each_pair {|key, value| puts "#{key}: #{value}"}
+foo: 0
+bar: 1
+baz: 2
+2.7.3 :135 > e=h.each_pair
+ => #<Enumerator: {:foo=>0, :bar=>1, :baz=>2}:each_pair> 
+2.7.3 :136 > e.each {|key, value| puts "#{key}: #{value}"}
+foo: 0
+bar: 1
+baz: 2
+2.7.3 :138 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :139 > h.each_value {|value| puts value }
+0
+1
+2
+2.7.3 :140 > {}.empty?
+ => true 
+2.7.3 :141 > h.empty?
+ => false 
+2.7.3 :142 > h1 = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :143 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :144 > h1.eql? h
+ => true 
+2.7.3 :145 > h2 = {foo: 0, baz: 2, bar: 1}
+ => {:foo=>0, :baz=>2, :bar=>1} 
+2.7.3 :146 > h1.eql? h2
+ => true 
+2.7.3 :149 > h.fetch(:foo)
+ => 0 
+2.7.3 :150 > {}.fetch(:foo,:default)
+ => :default 
+2.7.3 :152 > {}.fetch(:foo) {|k| "no key #{k}"}
+ => "no key foo" 
+2.7.3 :153 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :154 > h.fetch_values(:foo,:bar)
+ => [0, 1] 
+2.7.3 :155 > h.fetch_values(:foo,:bar,:noman,:bam) {|k| k.to_s}
+ => [0, 1, "noman", "bam"] 
+
+2.7.3 :158 > e=h.select
+ => #<Enumerator: {:foo=>0, :bar=>1, :baz=>2}:select> 
+2.7.3 :159 > e.each {|k,v| v<2}
+ => {:foo=>0, :bar=>1} 
+2.7.3 :160 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+ 2.7.3 :161 > h.select! {|k,v| v<2}
+ => {:foo=>0, :bar=>1} 
+2.7.3 :162 > h
+ => {:foo=>0, :bar=>1} 
+2.7.3 :163 > h = {foo: 0, bar: [:bat, [:baz, [:bat, ]]]}
+ => {:foo=>0, :bar=>[:bat, [:baz, [:bat]]]} 
+2.7.3 :164 > h.flatten
+ => [:foo, 0, :bar, [:bat, [:baz, [:bat]]]] 
+2.7.3 :165 > h.flatten(1)
+ => [:foo, 0, :bar, [:bat, [:baz, [:bat]]]] 
+2.7.3 :166 > h.flatten(2)
+ => [:foo, 0, :bar, :bat, [:baz, [:bat]]] 
+2.7.3 :167 > h.flatten(3)
+ => [:foo, 0, :bar, :bat, :baz, [:bat]] 
+2.7.3 :168 > h.flatten(4)
+ => [:foo, 0, :bar, :bat, :baz, :bat] 
+2.7.3 :169 > h.flatten(5)
+ => [:foo, 0, :bar, :bat, :baz, :bat] 
+2.7.3 :170 > h
+ => {:foo=>0, :bar=>[:bat, [:baz, [:bat]]]} 
+2.7.3 :171 > h.flatten(-1)
+ => [:foo, 0, :bar, :bat, :baz, :bat] 
+2.7.3 :174 > h.flatten(0)
+ => [[:foo, 0], [:bar, [:bat, [:baz, [:bat]]]]] 
+2.7.3 :175 > h.flatten(0)==h.to_a
+ => true 
+2.7.3 :176 > h.has_key?(:foo)
+ => true 
+2.7.3 :177 > h.has_key?(:bam)
+ => false 
+
+2.7.3 :178 > h.has_value?(0)
+ => true 
+2.7.3 :179 > h.has_value?(2)
+ => false 
+2.7.3 :180 > h1 = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :181 > h2 = {baz: 2, bar: 1, foo: 0}
+ => {:baz=>2, :bar=>1, :foo=>0} 
+2.7.3 :182 > h1.hash == h2.hash
+ => true 
+2.7.3 :184 > h1.replace({nothing:0,something:1})
+ => {:nothing=>0, :something=>1} 
+2.7.3 :185 > h1
+ => {:nothing=>0, :something=>1} 
+
+#alias of to_s
+2.7.3 :186 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :187 > h.inspect
+ => "{:foo=>0, :bar=>1, :baz=>2}" 
+
+2.7.3 :188 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :189 > h1=h.invert
+ => {0=>:foo, 1=>:bar, 2=>:baz} 
+2.7.3 :190 > h1
+ => {0=>:foo, 1=>:bar, 2=>:baz} 
+
+2.7.3 :191 > h = {foo: 0, bar: 0, baz: 0}
+ => {:foo=>0, :bar=>0, :baz=>0} 
+2.7.3 :192 > h1=h.invert
+ => {0=>:baz} 
+2.7.3 :193 > h1
+ => {0=>:baz} 
+
+
+2.7.3 :196 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :197 > h.keep_if {|k,v| k.start_with?('b') }
+ => {:bar=>1, :baz=>2} 
+2.7.3 :198 > h
+ => {:bar=>1, :baz=>2} 
+2.7.3 :200 > h.key(0)
+ => nil 
+2.7.3 :201 > h.key(1)
+ => :bar 
+
+2.7.3 :204 > h
+ => {:bar=>1, :baz=>2} 
+2.7.3 :205 > h.keys
+ => [:bar, :baz] 
+2.7.3 :206 > h.length
+ => 2 
+2.7.3 :207 > h.key?(:bar)
+ => true 
+2.7.3 :208 > h.member?(:bar)
+ => true 
+2.7.3 :209 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :210 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+2.7.3 :211 > h2 = {bam: 5, bat:6}
+ => {:bam=>5, :bat=>6} 
+2.7.3 :212 > h.merge(h1, h2)
+ => {:foo=>0, :bar=>4, :baz=>2, :bat=>6, :bam=>5} 
+2.7.3 :213 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :214 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+2.7.3 :215 > h2 = {bam: 5, bat:6}
+ => {:bam=>5, :bat=>6} 
+2.7.3 :216 > h.merge(h1, h2)
+ => {:foo=>0, :bar=>4, :baz=>2, :bat=>6, :bam=>5} 
+2.7.3 :217 > h.merge(h1, h2) {|k,old_value,new_value| old_value + new_value}
+ => {:foo=>0, :bar=>5, :baz=>2, :bat=>9, :bam=>5} 
+2.7.3 :218 > h.merge(h1, h2)
+2.7.3 :219 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :220 > h.merge
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :221 > h1 = h.merge {|k,old_value,new_value| raise 'cannot happen'}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :223 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :224 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+2.7.3 :225 > h2 = {bar: 5, bat:6}
+ => {:bar=>5, :bat=>6} 
+2.7.3 :226 > h.merge!(h1, h2)
+ => {:foo=>0, :bar=>5, :baz=>2, :bat=>6} 
+2.7.3 :227 > h3 = h.merge!(h1, h2) { |key, old_value, new_value| old_value + new_value }
+ => {:foo=>0, :bar=>14, :baz=>2, :bat=>15} 
+
+ 2.7.3 :228 > h
+ => {:foo=>0, :bar=>14, :baz=>2, :bat=>15} 
+2.7.3 :229 > h.rassoc(1)
+ => nil 
+2.7.3 :230 > h.rassoc(0)
+ => [:foo, 0] 
+2.7.3 :231 > h
+ => {:foo=>0, :bar=>14, :baz=>2, :bat=>15} 
+2.7.3 :232 > h1 = h.reject {|key, value| key.start_with?('b') }
+ => {:foo=>0} 
+2.7.3 :233 > h1
+ => {:foo=>0} 
+2.7.3 :234 > h
+ => {:foo=>0, :bar=>14, :baz=>2, :bat=>15} 
+
+2.7.3 :235 > h
+ => {:foo=>0, :bar=>14, :baz=>2, :bat=>15} 
+2.7.3 :236 > h1 = h.reject! {|key, value| key.start_with?('b') }
+ => {:foo=>0} 
+2.7.3 :237 > h
+ => {:foo=>0} 
+
+2.7.3 :240 > h.shift
+ => [:foo, 0] 
+2.7.3 :241 > h
+ => {:bar=>1, :baz=>2} 
+2.7.3 :242 > h
+ => {:bar=>1, :baz=>2} 
+2.7.3 :243 > h.store(:new,3)
+ => 3 
+2.7.3 :244 > h
+ => {:bar=>1, :baz=>2, :new=>3} 
+
+2.7.3 :248 > h[:newone]=5
+ => 5 
+2.7.3 :249 > h
+ => {:bar=>1, :baz=>2, :new=>4, :newone=>5} 
+
+
+2.7.3 :245 > h.to_a
+ => [[:bar, 1], [:baz, 2], [:new, 3]] 
+
+2.7.3 :250 > h.to_hash
+ => {:bar=>1, :baz=>2, :new=>4, :newone=>5} 
+2.7.3 :251 > h.to_s
+ => "{:bar=>1, :baz=>2, :new=>4, :newone=>5}" 
+
+2.7.3 :254 > h1=h.transform_keys {|key| key.to_s}
+ => {"bar"=>1, "baz"=>2, "new"=>4, "newone"=>5} 
+
+2.7.3 :255 > h1
+ => {"bar"=>1, "baz"=>2, "new"=>4, "newone"=>5} 
+
+2.7.3 :261 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :262 > h.transform_values! {|value| value * 100}
+ => {:foo=>0, :bar=>100, :baz=>200} 
+2.7.3 :263 > h
+ => {:foo=>0, :bar=>100, :baz=>200} 
+
+2.7.3 :265 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :266 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+2.7.3 :267 > h2 = {bam: 5, bat:6}
+ => {:bam=>5, :bat=>6} 
+2.7.3 :268 > h.merge!(h1, h2) 
+ => {:foo=>0, :bar=>4, :baz=>2, :bat=>6, :bam=>5} 
+2.7.3 :269 > h
+ => {:foo=>0, :bar=>4, :baz=>2, :bat=>6, :bam=>5} 
+2.7.3 :270 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :271 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+2.7.3 :272 > h2 = {bam: 5, bat:6}
+ => {:bam=>5, :bat=>6} 
+2.7.3 :273 > h3 = h.merge!(h1, h2) { |key, old_value, new_value| old_value + new_value }
+ => {:foo=>0, :bar=>5, :baz=>2, :bat=>9, :bam=>5} 
+2.7.3 :274 >  h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :275 > h.values
+ => [0, 1, 2] 
+2.7.3 :276 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+2.7.3 :277 > h.values_at(:baz, :foo)
+ => [2, 0] 2.7.3 :278 > h.values_at(:hello, :foo)
+ => [nil, 0] 
