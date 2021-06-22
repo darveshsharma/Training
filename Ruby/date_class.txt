@@ -1,0 +1,161 @@
+2.7.3 :036 > Date.today
+ => #<Date: 2021-06-22 ((2459388j,0s,0n),+0s,2299161j)> 
+2.7.3 :037 > Date.new
+ => #<Date: -4712-01-01 ((0j,0s,0n),+0s,2299161j)> 
+2.7.3 :038 > Date.today +1
+ => #<Date: 2021-06-22 ((2459388j,0s,0n),+0s,2299161j)> 
+2.7.3 :039 > Date.parse("98/09/07")
+ => #<Date: 1998-09-07 ((2451064j,0s,0n),+0s,2299161j)> 
+2.7.3 :040 > Date.parse("september 07")
+ => #<Date: 2021-09-07 ((2459465j,0s,0n),+0s,2299161j)> 
+2.7.3 :041 > Date.parse("May i got to washroom")
+ => #<Date: 2021-05-01 ((2459336j,0s,0n),+0s,2299161j)> 
+2.7.3 :042 > Date._parse("May i got to washroom")
+ => {:mon=>5} 
+2.7.3 :043 > Date._parse("98/09/07")
+ => {:year=>1998, :mon=>9, :mday=>7} 
+2.7.3 :044 > Date._parse("september 07")
+ => {:mon=>9, :mday=>7} 
+2.7.3 :003 > Date.iso8601("2020-09-07")
+ => #<Date: 2020-09-07 ((2459100j,0s,0n),+0s,2299161j)> 
+2.7.3 :006 > Date.strptime("7 of September", "%d of %B")
+ => #<Date: 2021-09-07 ((2459465j,0s,0n),+0s,2299161j)> 
+2.7.3 :008 > Time.strptime("1 of December 2017", "%d of %B %Y")
+ => 2017-12-01 00:00:00 +0530 
+2.7.3 :010 > Date::MONTHNAMES
+ => [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
+2.7.3 :011 > Date::DAYNAMES.rotate(1)
+ => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] 
+2.7.3 :015 > Date.httpdate('Sat, 03 Feb 2001 00:00:00 GMT')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :016 > Date._httpdate('Sat, 03 Feb 2001 00:00:00 GMT')
+ => {:wday=>6, :mday=>3, :mon=>2, :year=>2001, :hour=>0, :min=>0, :sec=>0, :zone=>"GMT", :offset=>0} 
+2.7.3 :017 > Date.new(2001)
+ => #<Date: 2001-01-01 ((2451911j,0s,0n),+0s,2299161j)> 
+2.7.3 :018 > Date.new(2021)
+ => #<Date: 2021-01-01 ((2459216j,0s,0n),+0s,2299161j)> 
+2.7.3 :023 > Date.iso8601('2000-09-09')
+ => #<Date: 2000-09-09 ((2451797j,0s,0n),+0s,2299161j)> 
+2.7.3 :024 > Date._iso8601('2000-09-09')
+ => {:mday=>9, :year=>2000, :mon=>9} 
+2.7.3 :025 > Date.jisx0301('2000-09-09')
+ => #<Date: 2000-09-09 ((2451797j,0s,0n),+0s,2299161j)> 
+2.7.3 :026 > Date._jisx0301('2000-09-09')
+ => {:mday=>9, :year=>2000, :mon=>9} 
+2.7.3 :027 > Date.parse('2000-09-09')
+ => #<Date: 2000-09-09 ((2451797j,0s,0n),+0s,2299161j)> 
+2.7.3 :028 > Date._parse('2000-09-09')
+ => {:year=>2000, :mon=>9, :mday=>9} 
+2.7.3 :034 > Date.rfc822('Sat, 03 Feb 2001 00:00:00 GMT')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :035 > Date._rfc822('Sat, 03 Feb 2001 00:00:00 GMT')
+ => {:wday=>6, :mday=>3, :mon=>2, :year=>2001, :hour=>0, :min=>0, :sec=>0, :zone=>"GMT", :offset=>0} 
+2.7.3 :036 > Date._strptime('2001-02-03', '%Y-%m-%d')
+ => {:year=>2001, :mon=>2, :mday=>3} 
+2.7.3 :037 > Date.strptime('2001-02-03', '%Y-%m-%d')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :046 > Date.new(2021)
+ => #<Date: 2021-01-01 ((2459216j,0s,0n),+0s,2299161j)> 
+2.7.3 :047 > Date.new(2021,6,30)
+ => #<Date: 2021-06-30 ((2459396j,0s,0n),+0s,2299161j)> 
+2.7.3 :048 > Date.new(2021,6,-1)
+ => #<Date: 2021-06-30 ((2459396j,0s,0n),+0s,2299161j)> 
+2.7.3 :049 > Date.new(2021,6,-10)
+ => #<Date: 2021-06-21 ((2459387j,0s,0n),+0s,2299161j)> 
+2.7.3 :050 > Date.new(2021,6,-9)
+ => #<Date: 2021-06-22 ((2459388j,0s,0n),+0s,2299161j)> 
+2.7.3 :051 > Date.commercial(2021)
+ => #<Date: 2021-01-04 ((2459219j,0s,0n),+0s,2299161j)> 
+2.7.3 :052 > Date.commercial(2021,06)
+ => #<Date: 2021-02-08 ((2459254j,0s,0n),+0s,2299161j)> 
+2.7.3 :053 > Date.commercial(2021,06,05)
+ => #<Date: 2021-02-12 ((2459258j,0s,0n),+0s,2299161j)>
+
+2.7.3 :055 > Date.gregorian_leap?(2021)
+ => false 
+2.7.3 :056 > Date.gregorian_leap?(2020)
+ => true 
+2.7.3 :057 > Time.now.to_i
+ => 1624357089 
+2.7.3 :058 > Date.jd(1624357089)
+ => #<Date: 4442626-07-22 ((1624357089j,0s,0n),+0s,2299161j)> 
+2.7.3 :059 > Date.jd(1624346521 )
+ => #<Date: 4442597-08-14 ((1624346521j,0s,0n),+0s,2299161j)> 
+
+2.7.3 :060 > Date.jisx0301('H13.02.03')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :061 > Date.julian_leap?(1900) 
+ => true 
+2.7.3 :062 > Date.julian_leap?(1901) 
+ => false 
+2.7.3 :063 > Date.julian_leap?(1904) 
+ => true 
+2.7.3 :064 > Date.julian_leap?(1908) 
+ => true 
+2.7.3 :065 > Date.ordinal(2001)
+ => #<Date: 2001-01-01 ((2451911j,0s,0n),+0s,2299161j)> 
+2.7.3 :066 > Date.ordinal(2001,34)
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :067 > Date.ordinal(2001,-1)
+ => #<Date: 2001-12-31 ((2452275j,0s,0n),+0s,2299161j)> 
+2.7.3 :068 > Date.strptime('2001-02-03')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :069 > Date.strptime('2001-02-03').class
+ => Date 
+2.7.3 :070 > date =Date.strptime('2001-02-03')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+2.7.3 :071 > date.mon
+ => 2 
+2.7.3 :072 > date.day
+ => 3 
+2.7.3 :073 > date = Date.strptime('03-02-2001') 
+ => #<Date: 0003-02-20 ((1722204j,0s,0n),+0s,2299161j)> 
+2.7.3 :074 > date.day
+ => 20 
+2.7.3 :075 > date.mon
+ => 2 
+2.7.3 :076 > date.year
+ => 3 
+
+2.7.3 :077 > Date.valid_date?(2001,2,3)       
+ => true 
+2.7.3 :078 > Date.valid_date?(2001,2,29)      
+ => false 
+2.7.3 :079 > Date.valid_date?(2001,2,-1)      
+ => true 
+
+2.7.3 :080 > Date.valid_commercial?(2001,5,6)  
+ => true 
+2.7.3 :081 > Date.valid_commercial?(2001,5,8)  
+ => false 
+2.7.3 :082 > Date.valid_jd?(2451944)
+ => true 
+2.7.3 :083 > Date.valid_ordinal?(2001,34)
+ => true 
+2.7.3 :084 > Date.valid_ordinal?(2001,366)
+ => false 
+
+2.7.3 :085 > Date.new(2001,2,3) === Date.new(2001,2,3)
+ => true 
+2.7.3 :086 > Date.new(2001,2,3) === Date.new(2001,2,4)
+ => false 
+2.7.3 :087 > Date.new(2001,1,31) >> 2
+ => #<Date: 2001-03-31 ((2452000j,0s,0n),+0s,2299161j)> 
+
+2.7.3 :088 > Date.new(2021,06,22).wday
+ => 2 
+2.7.3 :089 > Date.new(2021,06,22).cwday
+ => 2 
+2.7.3 :090 > Date.new(2021,06,22).cweek
+ => 25 
+2.7.3 :091 > Date.new(2021,06,22).cwyear
+ => 2021 
+2.7.3 :092 > Date.new(2021,06,22).mday
+ => 22 
+2.7.3 :093 > Date.new(1582,10,15).gregorian?
+ => true 
+2.7.3 :094 > (Date.new(1582,10,15) - 1).gregorian?
+ => false 
+2.7.3 :095 > Date.new(2021,06,22).mon
+ => 6 
+

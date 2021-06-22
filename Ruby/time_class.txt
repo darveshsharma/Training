@@ -1,0 +1,123 @@
+2.7.3 :072 > time = Time.new
+ => 2021-06-21 17:16:20.589494254 +0530 
+2.7.3 :073 > time = Time.now
+ => 2021-06-21 17:16:23.213227792 +0530 
+2.7.3 :074 > time.year     
+ => 2021 
+2.7.3 :075 > time.month   
+ => 6 
+2.7.3 :076 > time.day     
+ => 21 
+2.7.3 :077 > time.wday    
+ => 1 
+2.7.3 :078 > time.yday    
+ => 172 
+2.7.3 :079 > time.hour    
+ => 17 
+2.7.3 :080 > time.min     
+ => 16 
+2.7.3 :081 > time.sec     
+ => 23 
+2.7.3 :083 > time.zone    
+ => "IST" 
+
+2.7.3 :027 > Time.httpdate("Tue, 22 Jul 2021 02:26:12 GMT")
+ => 2021-07-22 02:26:12 UTC 
+
+2.7.3 :028 > Time.parse("Tue, 22 Jul 2021 02:26:12 GMT")
+ => 2021-07-22 02:26:12 +0000 
+2.7.3 :029 > Time.parse("Tue, 22 Jul 2021 02:26:12 IST")
+ => 2021-07-22 02:26:12 +0530 
+2.7.3 :030 > Time.parse("Tue, 22 Jul 2021 02:26:12 UTC")
+ => 2021-07-22 02:26:12 UTC 
+2.7.3 :031 > Time.parse("Tue, 22 Jul 2021 02:26:12 PST")
+ => 2021-07-22 02:26:12 -0800 
+2.7.3 :101 > Time.now.tuesday?
+ => true 
+2.7.3 :103 > Time.now.wednesday?
+ => false 
+2.7.3 :104 > Time.at(150000)
+ => 1970-01-02 23:10:00 +0530 
+2.7.3 :109 > Time.now.utc
+ => 2021-06-22 07:02:39.70480084 UTC 
+2.7.3 :110 > Time.now.zone
+ => "IST" 
+2.7.3 :113 > Time.now.utc_offset
+ => 19800 
+2.7.3 :114 > Time.now.utc_offset / 3600
+ => 5 
+2.7.3 :119 > Time.now.strftime("%d/%m/%Y")
+ => "22/06/2021" 
+2.7.3 :120 > Time.now.strftime("%A ,%d/%m/%Y")
+ => "Tuesday ,22/06/2021" 
+2.7.3 :121 > Time.now.strftime("%A ,%d %m %Y")
+ => "Tuesday ,22 06 2021" 
+2.7.3 :122 > Time.now.strftime("%A ,%d, %m, %Y")
+ => "Tuesday ,22, 06, 2021" 
+2.7.3 :123 > Time.now.strftime("%A, %d, %m, %Y")
+ => "Tuesday, 22, 06, 2021" 
+
+2.7.3 :130 > Time.now + 10
+ => 2021-06-22 12:43:46.350916551 +0530 
+2.7.3 :131 > Time.now 
+ => 2021-06-22 12:43:45.230621048 +0530 
+2.7.3 :132 > Time.now + 60
+ => 2021-06-22 12:44:57.727147135 +0530 
+2.7.3 :133 > Time.now + 120
+ => 2021-06-22 12:46:06.223326322 +0530 
+2.7.3 :134 > Time.now + 86400
+ => 2021-06-23 12:50:33.540377827 +0530 
+2.7.3 :138 > Time.now.to_i
+ => 1624346521 
+2.7.3 :139 > Time.parse("31-01-01")
+ => 2031-01-01 00:00:00 +0530 
+2.7.3 :140 > Time.parse("may 22")
+ => 2021-05-22 00:00:00 +0530 
+2.7.3 :143 > Time.rfc2822("22 Jul 2021 22:26:12 -0400")
+ => 2021-07-22 22:26:12 -0400 
+2.7.3 :003 > Time.parse("01-10-31") {|year| year + (year < 70 ? 2020 : 1900)}
+ => 2021-10-31 00:00:00 +0530 
+
+2.7.3 :006 > Time.now.strftime("%a")
+ => "Tue" 
+2.7.3 :007 > Time.now.strftime("%A, %B")
+ => "Tuesday, June" 
+2.7.3 :008 > Time.now.strftime("%A, %B %Y")
+ => "Tuesday, June 2021" 
+2.7.3 :009 > Time.now.strftime("%A, %B %Y")
+2.7.3 :009 > Time.now.strftime("%c")
+ => "Tue Jun 22 14:41:32 2021" 
+2.7.3 :010 > Time.now.strftime("%C")
+ => "20" 
+2.7.3 :012 > Time.now.strftime("%d,%A, %B %Y")
+ => "22,Tuesday, June 2021" 
+2.7.3 :014 > Time.now.strftime("%D")
+ => "06/22/21" 
+2.7.3 :015 > Time.now.strftime("%F")
+ => "2021-06-22" 
+2.7.3 :016 > Time.now.strftime("%G")
+ => "2021" 
+2.7.3 :017 > Time.now.strftime("%I")
+ => "02" 
+2.7.3 :019 > Time.now.strftime("%j")
+ => "173" 
+2.7.3 :020 > Time.now.strftime("%x")
+ => "06/22/21" 
+2.7.3 :021 > Time.now.strftime("%z")
+ => "+0530" 
+2.7.3 :022 > Time.now.strftime("%Z")
+ => "IST" 
+2.7.3 :023 > Time.zone_offset("EST")
+ => -18000 
+2.7.3 :024 > Time.zone_offset("IST")
+ => 19800 
+2.7.3 :025 > Time.zone_offset("IST")/3600
+ => 5 
+2.7.3 :026 > Time.zone_offset("EST")/3600
+ => -5 
+2.7.3 :033 > Time.rfc2822("Wed, 05 Oct 2011 22:26:12 -0400")
+ => 2011-10-05 22:26:12 -0400 
+2.7.3 :034 > Time.rfc2822("Wed, 05 Oct 2011 22:26:12 -0530")
+ => 2011-10-05 22:26:12 -0530 
+2.7.3 :040 > Time.new.httpdate
+ => "Tue, 22 Jun 2021 10:07:59 GMT" 
