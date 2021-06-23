@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def validate_email(string)
     re=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     if string =~ re

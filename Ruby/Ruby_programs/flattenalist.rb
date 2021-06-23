@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 $a=Array.new
 def flatten_a_list(list)
     list.each do |i|

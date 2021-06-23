@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 class Books
     @@book_list=[]
     @@author_title=[]

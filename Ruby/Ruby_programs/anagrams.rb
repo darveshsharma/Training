@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def anagrams(string1,string2)
     string1=string1.downcase.chars.sort.join
     string2=string2.downcase.chars.sort.join

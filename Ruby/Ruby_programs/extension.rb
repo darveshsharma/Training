@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def extension(array)
     n_array=[]
     array.each do |i|

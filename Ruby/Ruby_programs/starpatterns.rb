@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def star_pattern_right(no_of_rows)
     i=0
     while i < no_of_rows do

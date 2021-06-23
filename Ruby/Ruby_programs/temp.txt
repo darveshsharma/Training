@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+this is something i can check 

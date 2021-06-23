@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def addition(a,b)
     print a+b
 end

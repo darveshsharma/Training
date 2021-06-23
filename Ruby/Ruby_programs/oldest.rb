@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def oldest(hash)
     max_age=0
     max_age_person=""

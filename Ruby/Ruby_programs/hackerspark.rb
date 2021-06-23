@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def hacker_speak(code)
     code.each_char do |i|
         if i=="a"

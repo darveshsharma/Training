@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def Fabonacci_series(n_terms)
     n1,n2=0,1
     count =0

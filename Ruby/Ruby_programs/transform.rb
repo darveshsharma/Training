@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def Transform_upvotes(string)
     array =[]
     string=string.split

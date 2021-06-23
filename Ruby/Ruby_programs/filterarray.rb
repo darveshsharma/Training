@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def filter_array(array)
     num_list=[]
     array.each do |i|

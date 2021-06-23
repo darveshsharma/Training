@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def index_filter(array,str)
     n=""
     str=str.downcase

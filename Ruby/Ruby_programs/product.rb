@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def total_sales(array,check)
     sum=0
     for i in 0 ... (array[0].length)

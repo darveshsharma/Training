@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def expensive_orders(hash,int)
     max_cost={}
     hash.each do |key,value|

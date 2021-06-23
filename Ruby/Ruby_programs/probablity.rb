@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def probablity(array, no)
     count=0
     array.each do |i|

@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def is_factorial(int,i=1)
     int=int.to_f
     if int/i> 1

@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'csv'
 new_file=CSV.read("temp.csv")
 
@@ -16,3 +17,5 @@ puts "file after changing"
 print "\n#{new_file1}"
 
 puts "the item added #{new_file1.last}"
+
+

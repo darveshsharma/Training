@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def football_points(win,draw,loose)
     print (3 * win) +draw
 end

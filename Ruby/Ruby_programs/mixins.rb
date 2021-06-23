@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 module Child_1
     def a1
      puts 'This is Child one.'

@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def square_root(number)
     print number*number
 end

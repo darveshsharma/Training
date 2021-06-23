@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def leader(list)
     leader_list=[]
     for i in 0...(list.length - 1)
