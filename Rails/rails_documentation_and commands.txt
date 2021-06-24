@@ -1,0 +1,42 @@
+--Creating the project
+rails new "project name" -d "database name"
+
+
+--Making changes in database.yml file 
+adding username and password of the postgresql and alter the database name if intended
+then run command 
+rake db:create
+then creation will done
+and then run command
+rake db:migrate
+
+--generating models 
+first writing commands
+rake generate model "table_name"
+then add columns in the db/migrate
+"class CreateEmployees < ActiveRecord::Migration[6.1]
+  def change
+    create_table :employees do |t|
+      t.string :Name
+      t.string :Last_Name
+      t.integer :Employee_id
+      t.timestamps
+    end
+  end
+end"
+like this 
+
+--making migrations or making the changes
+run the command 
+rails migrations
+
+--adding column in the model or table
+run command
+rails g migration add_"colum name"_to_"table_name" "column_name":"data_type"
+
+--removing column in the model or table
+run command
+rails g migration remove_"colum name"_from_"table_name" 
+
+
+
