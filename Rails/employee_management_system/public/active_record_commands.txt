@@ -192,3 +192,10 @@
 2.7.3 :040 > Employee.select(:salary).group(:salary).having("salary > 20000")
   Employee Load (0.9ms)  SELECT "employees"."salary" FROM "employees" GROUP BY "employees"."salary" HAVING (salary > 20000) /* loading for inspect */ LIMIT $1  [["LIMIT", 11]]
  => #<ActiveRecord::Relation [#<Employee id: nil, salary: 50000>, #<Employee id: nil, salary: 30000>]> 
+
+15)Joins
+
+--joining with department table
+2.7.3 :027 > Department.joins("INNER JOIN Employees as e on e.id = Departments.id and salary > 10000")
+  Department Load (1.3ms)  SELECT "departments".* FROM "departments" INNER JOIN Employees as e on e.id = Departments.id and salary > 10000 /* loading for inspect */ LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Department id: 1, Name: "Aayush", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:30:51.744901000 +0000", updated_at: "2021-06-25 11:30:51.744901000 +0000">, #<Department id: 3, Name: "Darvesh", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.592434000 +0000", updated_at: "2021-06-25 11:31:56.592434000 +0000">, #<Department id: 6, Name: "Himanshu", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.630191000 +0000", updated_at: "2021-06-25 11:31:56.630191000 +0000">, #<Department id: 7, Name: "Aaporv", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.642165000 +0000", updated_at: "2021-06-25 11:31:56.642165000 +0000">, #<Department id: 8, Name: "Devesh", Dept_id: 2, Depat_name: "ACCOUNTS", created_at: "2021-06-25 11:31:56.653516000 +0000", updated_at: "2021-06-25 11:31:56.653516000 +0000">, #<Department id: 9, Name: "Akhil", Dept_id: 2, Depat_name: "ACCOUNTS", created_at: "2021-06-25 11:31:56.666523000 +0000", updated_at: "2021-06-25 11:31:56.666523000 +0000">, #<Department id: 11, Name: "Gulshan", Dept_id: 5, Depat_name: "CRM", created_at: "2021-06-25 11:31:56.691341000 +0000", updated_at: "2021-06-25 11:31:56.691341000 +0000">]> 
