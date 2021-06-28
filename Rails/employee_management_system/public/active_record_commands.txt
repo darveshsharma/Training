@@ -199,3 +199,68 @@
 2.7.3 :027 > Department.joins("INNER JOIN Employees as e on e.id = Departments.id and salary > 10000")
   Department Load (1.3ms)  SELECT "departments".* FROM "departments" INNER JOIN Employees as e on e.id = Departments.id and salary > 10000 /* loading for inspect */ LIMIT $1  [["LIMIT", 11]]
  => #<ActiveRecord::Relation [#<Department id: 1, Name: "Aayush", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:30:51.744901000 +0000", updated_at: "2021-06-25 11:30:51.744901000 +0000">, #<Department id: 3, Name: "Darvesh", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.592434000 +0000", updated_at: "2021-06-25 11:31:56.592434000 +0000">, #<Department id: 6, Name: "Himanshu", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.630191000 +0000", updated_at: "2021-06-25 11:31:56.630191000 +0000">, #<Department id: 7, Name: "Aaporv", Dept_id: 3, Depat_name: "IT", created_at: "2021-06-25 11:31:56.642165000 +0000", updated_at: "2021-06-25 11:31:56.642165000 +0000">, #<Department id: 8, Name: "Devesh", Dept_id: 2, Depat_name: "ACCOUNTS", created_at: "2021-06-25 11:31:56.653516000 +0000", updated_at: "2021-06-25 11:31:56.653516000 +0000">, #<Department id: 9, Name: "Akhil", Dept_id: 2, Depat_name: "ACCOUNTS", created_at: "2021-06-25 11:31:56.666523000 +0000", updated_at: "2021-06-25 11:31:56.666523000 +0000">, #<Department id: 11, Name: "Gulshan", Dept_id: 5, Depat_name: "CRM", created_at: "2021-06-25 11:31:56.691341000 +0000", updated_at: "2021-06-25 11:31:56.691341000 +0000">]> 
+
+
+16)loops
+
+--updating values using loops
+2.7.3 :003 > for i in 3..11
+2.7.3 :004 >     Employee.find_by(id: i).update(email: "#{Employee.find_by(id: i).Name}#{Employee.find_by(id: i).Last_Name}@berylsystems.com")
+2.7.3 :005 > end
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+  TRANSACTION (0.4ms)  BEGIN
+  Employee Update (0.7ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.055798"], ["email", "DarveshSharma@berylsystems.com"], ["id", 3]]
+  TRANSACTION (36.0ms)  COMMIT
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 4], ["LIMIT", 1]]
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 4], ["LIMIT", 1]]
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 4], ["LIMIT", 1]]
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Update (0.7ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.098957"], ["email", "GawakshBahuguna@berylsystems.com"], ["id", 4]]
+  TRANSACTION (13.4ms)  COMMIT
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 5], ["LIMIT", 1]]
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 5], ["LIMIT", 1]]
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 5], ["LIMIT", 1]]
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Update (0.6ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.118371"], ["email", "TarunRawat@berylsystems.com"], ["id", 5]]
+  TRANSACTION (14.1ms)  COMMIT
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]
+uSharma@berylsystems.com"], ["id", 6]]
+  TRANSACTION (16.6ms)  COMMIT
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 7], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 7], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 7], ["LIMIT", 1]]
+  TRANSACTION (0.2ms)  BEGIN
+  Employee Update (0.6ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.159359"], ["email", "AaporvSharma@berylsystems.com"], ["id", 7]]
+  TRANSACTION (14.6ms)  COMMIT
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 8], ["LIMIT", 1]]
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 8], ["LIMIT", 1]]
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 8], ["LIMIT", 1]]
+  TRANSACTION (0.2ms)  BEGIN
+  Employee Update (0.5ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.178882"], ["email", "DeveshChaprana@berylsystems.com"], ["id", 8]]
+  TRANSACTION (16.7ms)  COMMIT
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 9], ["LIMIT", 1]]
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 9], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 9], ["LIMIT", 1]]
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Update (0.6ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.200471"], ["email", "AkhilRawat@berylsystems.com"], ["id", 9]]
+  TRANSACTION (15.0ms)  COMMIT
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 10], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 10], ["LIMIT", 1]]
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 10], ["LIMIT", 1]]
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Update (0.6ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.220711"], ["email", "PrernaSharma@berylsystems.com"], ["id", 10]]
+  TRANSACTION (14.7ms)  COMMIT
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 11], ["LIMIT", 1]]
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 11], ["LIMIT", 1]]
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 11], ["LIMIT", 1]]
+  TRANSACTION (0.1ms)  BEGIN
+  Employee Update (0.5ms)  UPDATE "employees" SET "updated_at" = $1, "email" = $2 WHERE "employees"."id" = $3  [["updated_at", "2021-06-28 06:51:34.240154"], ["email", "GulshanSharma@berylsystems.com"], ["id", 11]]
+  TRANSACTION (8.7ms)  COMMIT
+ => 3..11 
+
+
+ 

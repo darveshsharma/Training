@@ -38,5 +38,12 @@ rails g migration add_"colum name"_to_"table_name" "column_name":"data_type"
 run command
 rails g migration remove_"colum name"_from_"table_name" 
 
+--changing column types
+run command
+ rails g migration ChangeSalaryToBigInt
+--changes in file
+change_column :employees, :salary, :bigint
 
-
+--Making foriegn key
+--make change in file
+ add_foreign_key :employees, :departments 
