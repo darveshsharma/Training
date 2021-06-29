@@ -47,3 +47,32 @@ change_column :employees, :salary, :bigint
 --Making foriegn key
 --make change in file
  add_foreign_key :employees, :departments 
+
+ --renaming column
+ rename_column :employees, :department, :department_id
+
+ --making associations one to many
+ -----one department has many employees 
+ class Department < ApplicationRecord
+    has_many :employees
+ end
+------one employee has many departments
+class Employee < ApplicationRecord
+    belongs_to :department
+end
+
+--making associations many to many through
+----one employee had more than 1 project
+----one project can be done by more than one employee
+----we make another table name project_assignment the changes done are 
+----------changes in employees    
+    has_many :project_assignments
+    has_many :projects, through: :project_assignments
+----------changes in projects
+    has_many :project_assignments
+    has_many :employees, through: :project_assignments
+----------changes in project_assignments
+    belongs_to :employee
+    belongs_to :project
+
+

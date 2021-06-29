@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_072226) do
+ActiveRecord::Schema.define(version: 2021_06_29_103430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "departments", force: :cascade do |t|
-    t.string "Name"
-    t.integer "Dept_id"
-    t.string "Depat_name"
+    t.string "Department_Name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,13 +24,30 @@ ActiveRecord::Schema.define(version: 2021_06_28_072226) do
   create_table "employees", force: :cascade do |t|
     t.string "Name"
     t.string "Last_Name"
+    t.string "Gender", limit: 1
+    t.date "DOB"
+    t.date "DOJ"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "salary"
-    t.string "email"
     t.bigint "department_id"
-    t.index ["email"], name: "index_employees_on_email"
+    t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
-  add_foreign_key "employees", "departments"
+  create_table "project_assignments", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_project_assignments_on_employee_id"
+    t.index ["project_id"], name: "index_project_assignments_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "Project_Name"
+    t.string "Status"
+    t.date "Deploying_Date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end
