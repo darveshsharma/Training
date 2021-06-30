@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_103430) do
+ActiveRecord::Schema.define(version: 2021_06_30_060248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.string "feedback_type"
+    t.bigint "feedback_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["feedback_type", "feedback_id"], name: "index_comments_on_feedback"
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "Department_Name"
