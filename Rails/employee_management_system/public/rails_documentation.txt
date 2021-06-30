@@ -76,3 +76,25 @@ end
     belongs_to :project
 
 
+--making paloymorphic associations
+----we make a table named comments
+----one employee can get many coments
+----one project can get many comments
+----------changes in employees    
+    has_many :comments, as: :feedback
+----------changes in projects
+    has_many :comments, as: :feedback
+----------changes in 
+    belongs_to :feedback, polymorphic: true
+
+--Applying validation on name for presence
+    validates! :Name, presence: {message: "please enter"} #used ! with validates
+
+--Applying validation on gender using inclusion
+    validates! :Gender, inclusion: {in: %w(M F m f other Other) , message: "%{value} can be M/F/Other!!"} #used ! with validates
+
+--Applying validation on content using length
+    validates :content, length: {minimum: 5, maximum: 100 }
+
+--Applying validation on Department_Name using uniqueness
+    validates! :Department_Name, uniqueness: { case_sensitive: false } #used ! with validates

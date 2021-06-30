@@ -283,3 +283,26 @@ uSharma@berylsystems.com"], ["id", 6]]
 2.7.3 :059 > @emp.projects.select("id","Project_Name","Status")
   Project Load (0.9ms)  SELECT "projects"."id", "projects"."Project_Name", "projects"."Status" FROM "projects" INNER JOIN "project_assignments" ON "projects"."id" = "project_assignments"."project_id" WHERE "project_assignments"."employee_id" = $1 /* loading for inspect */ LIMIT $2  [["employee_id", 3], ["LIMIT", 11]]
  => #<ActiveRecord::AssociationRelation [#<Project id: 3, Project_Name: "Employee management system", Status: "Pending">, #<Project id: 5, Project_Name: "MyGym", Status: "Pending">]> 
+
+19)Validation check
+
+2.7.3 :002 > Employee.new(Name: "Preet", Last_Name: "Bhadana", Gender: "a", DOB: Date.parse("1997/10/10"), DOJ: Date.parse("2021/06/23"),department_id: 3).valid?
+  Department Load (0.7ms)  SELECT "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+Traceback (most recent call last):
+        2: from (irb):1
+        1: from (irb):2:in `rescue in irb_binding'
+ActiveModel::StrictValidationFailed (Gender a can be M/F/Other!!)
+2.7.3 :003 > Employee.new(Name: "Preet", Last_Name: "Bhadana", Gender: "m", DOB: Date.parse("1997/10/10"), DOJ: Date.parse("2021/06/23"),department_id: 3).valid?
+  Department Load (0.6ms)  SELECT "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+ => true 
+2.7.3 :004 > Employee.new(Name: nil, Last_Name: "Bhadana", Gender: "m", DOB: Date.parse("1997/10/10"), DOJ: Date.parse("2021/06/23"),department_id: 3).valid?
+  Department Load (0.6ms)  SELECT "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+Traceback (most recent call last):
+        1: from (irb):4
+ActiveModel::StrictValidationFailed (Name please enter)
+2.7.3 :005 > Employee.new( Last_Name: "Bhadana", Gender: "m", DOB: Date.parse("1997/10/10"), DOJ: Date.parse("2021/06/23"),department_id: 3).valid?
+  Department Load (0.6ms)  SELECT "departments".* FROM "departments" WHERE "departments"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+Traceback (most recent call last):
+        2: from (irb):4
+        1: from (irb):5:in `rescue in irb_binding'
+ActiveModel::StrictValidationFailed (Name please enter)
