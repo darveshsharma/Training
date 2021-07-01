@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_060248) do
+ActiveRecord::Schema.define(version: 2021_07_01_065158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2021_06_30_060248) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "dependents", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.string "Name"
+    t.bigint "Contact_Number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_dependents_on_employee_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "Name"
     t.string "Last_Name"
@@ -39,6 +48,8 @@ ActiveRecord::Schema.define(version: 2021_06_30_060248) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "department_id"
+    t.integer "Age"
+    t.integer "Total_Years"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
