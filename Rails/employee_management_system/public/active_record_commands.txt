@@ -306,3 +306,15 @@ Traceback (most recent call last):
         2: from (irb):4
         1: from (irb):5:in `rescue in irb_binding'
 ActiveModel::StrictValidationFailed (Name please enter)
+
+20)Skipping validation
+2.7.3 :041 > Dependent.new(employee_id: @emp.id,Name: nil,Contact_Number: 88009568).save
+  TRANSACTION (0.4ms)  BEGIN
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 3], ["LIMIT", 1]]
+  TRANSACTION (0.4ms)  ROLLBACK
+ => false 
+2.7.3 :042 > Dependent.new(employee_id: @emp.id,Name: nil,Contact_Number: 88009568).save(validate: false)
+  TRANSACTION (0.4ms)  BEGIN
+  Dependent Create (0.6ms)  INSERT INTO "dependents" ("employee_id", "Contact_Number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["employee_id", 3], ["Contact_Number", 88009568], ["created_at", "2021-07-01 11:17:22.220005"], ["updated_at", "2021-07-01 11:17:22.220005"]]
+  TRANSACTION (10.2ms)  COMMIT
+ => true 
