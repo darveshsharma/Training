@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_065158) do
+ActiveRecord::Schema.define(version: 2021_07_02_070503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,31 +25,31 @@ ActiveRecord::Schema.define(version: 2021_07_01_065158) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "Department_Name"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "dependents", force: :cascade do |t|
     t.bigint "employee_id"
-    t.string "Name"
-    t.bigint "Contact_Number"
+    t.string "name"
+    t.bigint "contact_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_dependents_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
-    t.string "Name"
-    t.string "Last_Name"
-    t.string "Gender", limit: 1
-    t.date "DOB"
-    t.date "DOJ"
+    t.string "name"
+    t.string "last_name"
+    t.string "gender", limit: 1
+    t.date "dob"
+    t.date "doj"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "department_id"
-    t.integer "Age"
-    t.integer "Total_Years"
+    t.integer "age"
+    t.integer "total_years"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 2021_07_01_065158) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "Project_Name"
-    t.string "Status"
-    t.date "Deploying_Date"
+    t.string "name"
+    t.string "status"
+    t.date "deploying_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
