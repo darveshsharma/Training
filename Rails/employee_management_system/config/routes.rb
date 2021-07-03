@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "home#index"
+
+  get '/home', to: "home#index"
+  get 'employee', to: "employee#employee_page"
+  get '/department', to: "department#department_page"
+  get '/project', to: "project#project_page"
 end

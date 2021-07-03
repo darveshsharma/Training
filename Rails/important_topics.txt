@@ -1,0 +1,87 @@
+1)Difference between cookies and session?
+2)What is HTTP request. How it is different from HTTPS?
+3)Difference between client side and server side programming?
+4)What is REST architecture?
+5)What is gems in rails?
+
+1. Difference between cookies and sessions
+
+cookies
+Cookies are stored on the local computer. 
+Basically, it maintains user identification, meaning it tracks visitors record. 
+It is less secure than session. 
+It stores limited amount of data, and is maintained for a limited time.
+
+sessions
+Session is used for maintaining a dialogue between server and user. 
+It is more secure because it is stored on the server, we cannot easily access it. 
+It embeds cookies on the user computer. 
+It stores unlimited data.
+
+2. Difference Between HTTP and HTTPS
+ 
+HTTP
+Full form of HTTP is Hypertext Transfer Protocol. HTTP offers set of rules and standards which govern how any information can be transmitted on the World Wide Web. 
+HTTP provides standard rules for web browsers & servers to communicate.
+
+HTTP is an application layer network protocol which is built on top of TCP. HTTP uses Hypertext structured text which establishes the logical link between nodes containing text. 
+It is also known as "stateless protocol" as each command is executed separately, without using reference of previous run command.
+
+HTTPS
+HTTPS stands for Hyper Text Transfer Protocol Secure. It is highly advanced and secure version of HTTP. 
+It uses the port no. 443 for Data Communication. It allows the secure transactions by encrypting the entire communication with SSL. 
+It is a combination of SSL/TLS protocol and HTTP. It provides encrypted and secure identification of a network server.
+
+HTTP also allows you to create a secure encrypted connection between the server and the browser. 
+It offers the bi-directional security of Data. This helps you to protect potentially sensitive information from being stolen.
+
+In HTTPS protocol SSL transactions are negotiated with the help of key-based encryption algorithm. 
+This key is generally either 40 or 128 bits in strength.
+
+
+3.Difference between client side and server side programming?
+
+client side
+It is the program that runs on the client machine (browser) and deals with the user interface/display and any other processing that can happen on client machine like reading/writing cookies.
+
+1) Interact with temporary storage
+2) Make interactive web pages
+3) Interact with local storage
+4) Sending request for data to server
+5) Send request to server
+6) work as an interface between server and user
+
+
+server side
+
+It is the program that runs on server dealing with the generation of content of web page.
+1) Querying the database
+2) Operations over databases
+3) Access/Write a file on server.
+4) Interact with other servers.
+5) Structure web applications.
+6) Process user input. For example if user input is a text in search box, run a search algorithm on data stored on server and send the results.
+
+
+What is REST architecture?
+
+REST
+REST stands for REpresentational State Transfer and API stands for Application Program Interface.
+REST is a software architectural style that defines the set of rules to be used for creating web services.
+Web services which follow the REST architectural style are known as RESTful web services.
+It allows requesting systems to access and manipulate web resources by using a uniform and predefined set of rules.
+Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP).
+
+A Restful system consists of a:
+
+client who requests for the resources.
+server who has the resources.
+
+
+What is gems in rails?
+
+A gem is the equivalent to a plugin or an extension for the programming language ruby.
+
+To be exact even rails is nothing more than a gem.  
+A lot of gems are built on rails or other gems (they are dependent of said gem) or are standalone.
+
