@@ -1,0 +1,20 @@
+
+
+<table style="width:100%">
+<caption><h1>Employee Table</h1></caption>
+<tr>
+  <th>Firstname</th>
+  <th>Lastname</th>
+  <th>Gender</th>
+  <th>Date Of Birth</th>
+  <th>Date Of Joining</th>
+</tr>
+<%for i in 0...@employees.size%>
+<tr>
+  <td><%= @employees[i].name %></td>
+  <td><%= @employees[i].last_name %></td>
+  <td><%= @employees[i].gender %></td>
+  <td><%= @employees[i].dob %></td>
+  <td><%= @employees[i].doj %></td>
+</tr>
+<%end%>

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'employee', to: "employee#employee_page"
   get '/department', to: "department#department_page"
   get '/project', to: "project#project_page"
+  get '/records', to: "employee#show_record"
 end
