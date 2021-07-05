@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get '/home', to: "home#index"
   get 'employee', to: "employee#employee_page"
+  get '/employees', to: "employee#show_record"
   get '/department', to: "department#department_page"
+  get '/departments', to: "department#show_department"
   get '/project', to: "project#project_page"
-  get '/records', to: "employee#show_record"
+  get '/projects', to: "project#project_records"
 end

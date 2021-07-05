@@ -1,0 +1,21 @@
+<a href ="/department"><-Back</a>
+
+<table style="width:100%">
+<caption><h1>Department Table</h1></caption>
+<tr>
+  <th>Department Name</th>
+  <td>Employees Name</td>
+   </tr>
+
+  <tr>
+  <% for j in @dep.ids %>
+    
+    <th rowspan="<%= @dep.find(j).employees.ids.size %>"> <%= @dep.find(j).name %> </th>
+    <% for i in @dep.find(j).employees.ids %>
+    <td><%= @dep.find(j).employees.find(i).name %></td>
+  </tr>
+</tr>
+    <% end %>
+  <%end%>
+
+
