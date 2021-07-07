@@ -1,12 +1,31 @@
 <h1 style="margin-left: 39%;">Project Entry</h1>
-<form >
+<form name="projectform" action=''  onsubmit="return validateForm()" method="post">
 <label for="name">Project Name:</label><br>
 <input type="text" id="name" name="name"><br>
 <label for="status">Status</label><br>
-<input type="text" id="status" name="status"><br>
+<select id="status" name="status">
+    <option value="pending">Pending</option>
+    <option value="deployed">Deployed</option>
+</select>
 <label for="deploying_date">Deploying date:</label><br>
 <input type="text" id="deploying_date" name="deploying_date"><br><br>
 <input type="submit" value="Submit" style="margin-left:55px">
 <input type="reset" value="reset"><br>
 <a class="records" href="/projects">See previous records</a>
 </form>
+<script>function validateForm() {
+  let name = document.forms["projectform"]["name"].value;
+  let dd = document.forms["projectform"]["deploying_date"].value;
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  var pattern = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
+  if (dd == null || dd == "" || !pattern.test(dd)) {
+      alert("Invalid date of deployement");
+      return false;
+  }
+}
+
+</script>
+

@@ -1,5 +1,5 @@
 <h1 style="margin-left: 39%;">Department Entry</h1>
-<form >
+<form name="dform" action=''  onsubmit="return validateForm()" method="post">
 <label for="dname">Enter the department name:</label><br>
 <input type="text" id="dname" name="dname"><br><br>
 <input type="submit" value="Submit" style="margin-left:55px">
@@ -7,3 +7,13 @@
 <a class="records" href="/departments">See previous records</a>
 
 </form>
+<script>
+function validateForm() {
+  let dname = document.forms["dform"]["dname"].value;
+  if (dname == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+</script>

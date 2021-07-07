@@ -3,6 +3,7 @@
 <table style="width:100%">
 <caption><h1>Employee Table</h1></caption>
 <tr>
+  <th>Id</th>
   <th>Firstname</th>
   <th>Lastname</th>
   <th>Gender</th>
@@ -12,6 +13,7 @@
 </tr>
 <%for i in @employees.ids%>
 <tr>
+  <td><%= i %> </td>
   <td><%= @employees.find(i).name %></td>
   <td><%= @employees.find(i).last_name %></td>
   <td><%= @employees.find(i).gender %></td>
