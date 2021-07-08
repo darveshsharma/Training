@@ -1,0 +1,42 @@
+<h1 style="margin-left: 39%;">Employee Entry</h1>
+
+<form name="myForm" action=''  onsubmit="return validateForm()" method="post">
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname" placeholder="Enter your name"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="lname" ><br>
+<label for="gender">Gender:</label><br>
+<input type="radio" id="gender" name="gender" value="m">
+<label for="male">Male</label><br>
+<input type="radio" id="gender" name="gender" value="f">
+<label for="female">Female</label><br>
+<input type="radio" id="gender" name="gender" value="others">
+<label for="others">Others</label><br><br>
+<label for="dob">Date of birth:</label><br>
+<input type="text" id="dob" name="dob" placeholder="MM/DD/YYYY"><br>
+<label for="doj">Date of joining:</label><br>
+<input type="text" id="doj" name="doj" placeholder="MM/DD/YYYY"><br><br>
+<input type="submit" value="Submit" style="margin-left:25px">
+<input type="reset" value="reset"><br>
+<a class="records" href="/employees">See previous records</a>
+</form>
+<script>function validateForm() {
+  let name = document.forms["myForm"]["fname"].value;
+  let  dob = document.forms["myForm"]["dob"].value;
+  let doj = document.forms["myForm"]["doj"].value;
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  var pattern = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[1-2][0-9]|3[01])[\/]\d{4}$/;
+  if (dob == null || dob == "" || !pattern.test(dob)) {
+      alert("Invalid date of birth");
+      return false;
+  }
+  if (doj == null || doj == "" || !pattern.test(doj)) {
+    alert("Invalid date of joining");
+    return false;
+  }
+}
+
+</script>

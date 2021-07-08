@@ -1,0 +1,100 @@
+--Creating the project
+rails new "project name" -d "database name"
+
+
+--Making changes in database.yml file 
+adding username and password of the postgresql and alter the database name if intended
+then run command 
+rake db:create
+then creation will done
+and then run command
+rake db:migrate
+
+--generating models 
+first writing commands
+rake generate model "table_name"
+then add columns in the db/migrate
+"class CreateEmployees < ActiveRecord::Migration[6.1]
+  def change
+    create_table :employees do |t|
+      t.string :Name
+      t.string :Last_Name
+      t.integer :Employee_id
+      t.timestamps
+    end
+  end
+end"
+like this 
+
+--making migrations or making the changes
+run the command 
+rails db:migrate
+
+--adding column in the model or table
+run command
+rails g migration add_"colum name"_to_"table_name" "column_name":"data_type"
+
+--removing column in the model or table
+run command
+rails g migration remove_"colum name"_from_"table_name" 
+
+--changing column types
+run command
+ rails g migration ChangeSalaryToBigInt
+--changes in file
+change_column :employees, :salary, :bigint
+
+--Making foriegn key
+--make change in file
+ add_foreign_key :employees, :departments 
+
+ --renaming column
+ rename_column :employees, :department, :department_id
+
+ --making associations one to many
+ -----one department has many employees 
+ class Department < ApplicationRecord
+    has_many :employees
+ end
+------one employee has many departments
+class Employee < ApplicationRecord
+    belongs_to :department
+end
+
+--making associations many to many through
+----one employee had more than 1 project
+----one project can be done by more than one employee
+----we make another table name project_assignment the changes done are 
+----------changes in employees    
+    has_many :project_assignments
+    has_many :projects, through: :project_assignments
+----------changes in projects
+    has_many :project_assignments
+    has_many :employees, through: :project_assignments
+----------changes in project_assignments
+    belongs_to :employee
+    belongs_to :project
+
+
+--making paloymorphic associations
+----we make a table named comments
+----one employee can get many coments
+----one project can get many comments
+----------changes in employees    
+    has_many :comments, as: :feedback
+----------changes in projects
+    has_many :comments, as: :feedback
+----------changes in 
+    belongs_to :feedback, polymorphic: true
+
+--Applying validation on name for presence
+    validates! :Name, presence: {message: "please enter"} #used ! with validates
+
+--Applying validation on gender using inclusion
+    validates! :Gender, inclusion: {in: %w(M F m f other Other) , message: "%{value} can be M/F/Other!!"} #used ! with validates
+
+--Applying validation on content using length
+    validates :content, length: {minimum: 5, maximum: 100 }
+
+--Applying validation on Department_Name using uniqueness
+    validates! :Department_Name, uniqueness: { case_sensitive: false } #used ! with validates

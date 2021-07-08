@@ -1,0 +1,16 @@
+<a class="back" href ="/project"><-Back</a>
+
+<table style="width:100%">
+<caption><h1>Project Record</h1></caption>
+<tr>
+  <th>Project Name</th>
+  <th>Status</th>
+  <th>Deploying Date</th>
+</tr>
+<%for i in @projects.ids%>
+<tr>
+  <td><%= @projects.find(i).name %></td>
+  <td><%= @projects.find(i).status %></td>
+  <td><%= @projects.find(i).deploying_date %></td>
+</tr>
+<%end%>
