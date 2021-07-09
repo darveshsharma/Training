@@ -6,13 +6,29 @@ class EmployeeController < ApplicationController
     @employees = Employee.all
   end
   def create
-    #Employee.create(name: params[:employee][:name],last_name: params[:employee][:last_name], gender: params[:employee][:gender],dob: params[:employee][:dob], doj: params[:employee][:doj])
     @employee = Employee.new(employee_params)
     @employee.save
+    redirect_to '/employees'
+  end
+  
+  def edit_employee
+    @employee =  Employee.find(params[:id])
+  end
+  
+  def update_employee
+    @employee = Employee.find(params[:id])
+    @employee.update(name: params[:employee][:name], last_name: params[:employee][:last_name], gender: params[:employee][:gender] , dob: params[:employee][:dob], doj: params[:employee][:doj])
+    redirect_to '/employees'
+  end
+  
+  def delete_employee
+    @employee = Employee.find(params[:id])
+    @employee.delete
     redirect_to '/employees'
   end
   
   def employee_params
     params.require(:employee).permit(:name, :last_name, :gender, :dob, :doj , :department_id)
   end
+
 end

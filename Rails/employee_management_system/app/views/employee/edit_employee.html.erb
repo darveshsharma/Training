@@ -1,4 +1,4 @@
-<h1 style="margin-left: 39%;">Employee Entry</h1>
+<h1 style="margin-left: 39%;">Employee Update</h1>
 
 <%= form_for @employee, html: { name: 'myForm', onclick: 'return validateForm();' } do |f| %>
   <%= f.label :name, "Name:" %>
@@ -16,10 +16,12 @@
   <%= f.date_field :doj %><br><br><br>
   <%= f.label :department_id, "Enter Department Id" %>
   <%= f.select :department_id , Department.order(:id).ids.map {|i| [i,i]}%> 
-  <%= f.submit "Create" %>
+  <%= f.submit "Update" %>
 <% end %>
 
-<script>function validateForm() {
+
+<script>
+function validateForm() {
   let name = document.forms["myForm"]["employee[name]"].value;
   if (name == "") {
     alert("Name must be filled out");

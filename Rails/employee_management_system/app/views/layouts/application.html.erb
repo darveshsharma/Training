@@ -12,14 +12,37 @@
   </head>
 
   <body>
-  <div class="topnav">
-  <ul>
-  <li><a class ="active" href="/home" >Home</a></li>
-  <li><a href="/employee" > <%= Employee%> </a></li>
-  <li><a href="/department" > <%= Department%> </a></li>
-  <li><a href="/project" > <%= Project%> </a></li>
-  </ul>
+
+  <div class="navbar">
+  <a href="/home">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">Employee 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/employee">Create</a>
+      <a href="/employees">Show Records</a>
+    </div>
   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Department
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/department">Create</a>
+      <a href="/departments">Show Records</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Project
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/project">Create</a>
+      <a href="/projects">Show Records</a>
+    </div>
+  </div> 
+</div>
     <%= yield %>
   </body>
 </html>

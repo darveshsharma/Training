@@ -10,8 +10,10 @@
   <th>Date Of Birth</th>
   <th>Date Of Joining</th>
   <th>Department Name</th>
+  <th>Update</th>
+  <th>Delete</th>
 </tr>
-<% for i in @employees.ids %>
+<% @employees.order(:id).ids.each do |i| %>
 <tr>
   <td><%= i %> </td>
   <td><%= @employees.find(i).name %></td>
@@ -20,5 +22,7 @@
   <td><%= @employees.find(i).dob %></td>
   <td><%= @employees.find(i).doj %></td>
   <td><%= @employees.find(i).department.name%></td>
+  <td><a href="/employee/<%= i %>/edit">edit</a></td>
+  <td><a data-confirm="Are you sure? You wanna delete data of <%= @employees.find(i).name %>" rel="nofollow" data-method="delete" href="/employee/<%= i %>/delete">delete</a></td>
 </tr>
 <%end%>

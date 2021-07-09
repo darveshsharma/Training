@@ -4,15 +4,17 @@
 <caption><h1>Department Table</h1></caption>
 <tr>
   <th>Department Name</th>
+  <td>Employees id</td>
   <td>Employees Name</td>
    </tr>
 
   <tr>
-  <% for j in @dep.ids %>
+  <% @departments.ids.each do |j| %>
     
-    <th rowspan="<%= @dep.find(j).employees.ids.size %>"> <%= @dep.find(j).name %> </th>
-    <% for i in @dep.find(j).employees.ids %>
-    <td><%= @dep.find(j).employees.find(i).name %></td>
+    <th rowspan="<%= @departments.find(j).employees.ids.size %>"> <%= @departments.find(j).name %> </th>
+    <% @departments.find(j).employees.ids.each do |i| %>
+    <td><%= i %></td>
+    <td><%= @departments.find(j).employees.find(i).name + " " + @departments.find(j).employees.find(i).last_name%></td>
   </tr>
 </tr>
     <% end %>

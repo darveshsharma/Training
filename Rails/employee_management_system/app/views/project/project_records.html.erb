@@ -6,11 +6,15 @@
   <th>Project Name</th>
   <th>Status</th>
   <th>Deploying Date</th>
+  <th>Update</th>
+  <th>Delete</th>
 </tr>
-<%for i in @projects.ids%>
+<% @projects.order(:id).ids.each do |i| %>
 <tr>
   <td><%= @projects.find(i).name %></td>
   <td><%= @projects.find(i).status %></td>
   <td><%= @projects.find(i).deploying_date %></td>
+  <td><a href="/project/<%= i %>/edit">edit</a></td>
+  <td><a data-confirm="Are you sure? You wanna delete data of <%= @projects.find(i).name %>" rel="nofollow" data-method="delete" href="/project/<%= i %>/delete">delete</a></td>
 </tr>
 <%end%>

@@ -1,4 +1,4 @@
-<h1 style="margin-left: 39%;">Project Entry</h1>
+<h1 style="margin-left: 39%;">Project Updation</h1>
 
 <%= form_for @project, html: { name: 'projectform',  onclick: 'return validateForm();' } do |f| %>
   <%= f.label :name, "Project name:" %>
@@ -7,11 +7,8 @@
   <%= f.select :status,  [['Pending', "Pending"],['Deployed',"Deployed"]] %>
   <%= f.label :deploying_date, "Deploying Date" %> <br><br>
   <%= f.date_field :deploying_date %><br><br><br>
-  <%= f.submit "Create" %>
+  <%= f.submit "Update" %>
 <% end %>
-
-
-
 
 <script>function validateForm() {
   let name = document.forms["projectform"]["project[name]"].value;

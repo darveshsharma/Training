@@ -1,15 +1,15 @@
-<h1 style="margin-left: 39%;">Department Entry</h1>
-<form name="dform" action=''  onsubmit="return validateForm()" method="post">
-<label for="dname">Enter the department name:</label><br>
-<input type="text" id="dname" name="dname" placeholder="Enter Department Name"><br><br>
-<input type="submit" value="Submit" style="margin-left:55px">
-<input type="reset" value="reset"><br>
-<a class="records" href="/departments">See previous records</a>
+<h1 style="margin-left: 39%;">New Department Creation</h1>
 
-</form>
+<%= form_for @deparment, html: { name: 'dform', onclick: 'return validateForm();' } do |f| %>
+  <%= f.label :name, "Name:" %>
+  <%= f.text_field :name%>
+  <%= f.submit "Create" %>
+<% end %>
+
+
 <script>
 function validateForm() {
-  let dname = document.forms["dform"]["dname"].value;
+  let dname = document.forms["dform"]["department[name]"].value;
   if (dname == "") {
     alert("Name must be filled out");
     return false;
