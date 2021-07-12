@@ -21,7 +21,11 @@
   <td><%= @employees.find(i).gender %></td>
   <td><%= @employees.find(i).dob %></td>
   <td><%= @employees.find(i).doj %></td>
-  <td><%= @employees.find(i).department.name%></td>
+  <% if  @employees.find(i).department %>
+    <td><%= @employees.find(i).department.name%></td>
+  <% else %>
+    <td>To Be Deleted</td>
+  <% end %>
   <td><a href="/employee/<%= i %>/edit">edit</a></td>
   <td><a data-confirm="Are you sure? You wanna delete data of <%= @employees.find(i).name %>" rel="nofollow" data-method="delete" href="/employee/<%= i %>/delete">delete</a></td>
 </tr>

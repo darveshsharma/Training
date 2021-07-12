@@ -1,0 +1,14 @@
+<a class="back" " href ="/assignment"><-Back</a>
+
+<table style="width:100%">
+<caption><h1>Assignment Table</h1></caption>
+<tr>
+  <th>Employee Name</th>
+  <th>Assigned projects</th>
+</tr>
+  <% @assignments.ids.each do |i| %>
+  <tr>
+  <td><%= @assignments.find(i).employee.name %></td>
+  <td><%= @assignments.find(i).project.name %></td>
+  </tr>
+  <% end %>

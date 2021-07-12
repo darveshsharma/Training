@@ -1,22 +1,20 @@
+
 <a class="back" " href ="/department"><-Back</a>
 
 <table style="width:100%">
 <caption><h1>Department Table</h1></caption>
 <tr>
+
   <th>Department Name</th>
-  <td>Employees id</td>
-  <td>Employees Name</td>
-   </tr>
-
-  <tr>
+  <th>Update</th>
+  <th>Delete</th>
   <% @departments.ids.each do |j| %>
-    
-    <th rowspan="<%= @departments.find(j).employees.ids.size %>"> <%= @departments.find(j).name %> </th>
-    <% @departments.find(j).employees.ids.each do |i| %>
-    <td><%= i %></td>
-    <td><%= @departments.find(j).employees.find(i).name + " " + @departments.find(j).employees.find(i).last_name%></td>
-  </tr>
 </tr>
-    <% end %>
-  <%end%>
-
+  <tr>
+  
+    
+    <td > <%= @departments.find(j).name %> </td>
+        <td><a href="/department/<%= j %>/edit">edit</a></td>
+        <td><a data-confirm="Are you sure? You wanna delete data of <%= @departments.find(j).name %>" rel="nofollow" data-method="delete" href="/department/<%= j %>/delete">delete</a></td>
+  </tr>
+  <% end %>

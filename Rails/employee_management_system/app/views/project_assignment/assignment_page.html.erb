@@ -1,0 +1,9 @@
+<h1 style="margin-left: 39%;">Project Assignment</h1>
+
+<%= form_for @assignment do |f| %>
+  <%= f.label :employee_id, "Select Employee:" %>
+  <%= f.select :employee_id , Employee.order(:id).ids.map {|i| [Employee.find(i).name,i]}%>
+  <%= f.label :project_id, "Select Project:" %>
+  <%= f.select :project_id , Project.order(:id).ids.map {|i| [Project.find(i).name,i]}%>
+  <%= f.submit "Assign" %>
+<% end %>

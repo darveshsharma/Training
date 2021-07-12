@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_070503) do
+ActiveRecord::Schema.define(version: 2021_07_12_065523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,15 +30,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_070503) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "dependents", force: :cascade do |t|
-    t.bigint "employee_id"
-    t.string "name"
-    t.bigint "contact_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_dependents_on_employee_id"
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
@@ -51,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_07_02_070503) do
     t.integer "age"
     t.integer "total_years"
     t.index ["department_id"], name: "index_employees_on_department_id"
+  end
+
+  create_table "nominees", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.string "name"
+    t.bigint "contact_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_nominees_on_employee_id"
   end
 
   create_table "project_assignments", force: :cascade do |t|
