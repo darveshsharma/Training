@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get '/department', to: "department#department_page"
   post '/departments', to: "department#create"
   get '/departments', to: "department#show_department"
-  get 'department/:id/edit', to: 'department#edit_department'
+  get '/department.:id', to: 'department#edit_department'
   patch 'department.:id', to: 'department#update_department'
-  delete 'department/:id/delete', to: 'department#delete_department'
+  delete 'department.:id', to: 'department#delete_department'
   get '/project', to: "project#project_page"
   post '/projects', to: "project#create"
   get '/projects', to: "project#project_records"

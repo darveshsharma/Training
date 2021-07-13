@@ -1,25 +1,30 @@
 <h1 style="margin-left: 39%;">Project Entry</h1>
 
-<%= form_for @project, html: { name: 'projectform',  onclick: 'return validateForm();' } do |f| %>
+<%= form_for @project do |f| %>
   <%= f.label :name, "Project name:" %>
   <%= f.text_field :name%>
   <%= f.label :status, "Status:" %>
-  <%= f.select :status,  [['Pending', "Pending"],['Deployed',"Deployed"]] %>
+  <%= f.select :status,  [['select','select'],['Pending', "Pending"],['Deployed',"Deployed"]] %>
   <%= f.label :deploying_date, "Deploying Date" %> <br><br>
   <%= f.date_field :deploying_date %><br><br><br>
-  <%= f.submit "Create" %>
+  <%= f.submit "Create" ,id: "create"%>
 <% end %>
 
 
 
 
-<script>function validateForm() {
-  let name = document.forms["projectform"]["project[name]"].value;
+<script>
+document.getElementById("create").addEventListener("click", (event) => validateForm());
+
+function validateForm(){
+  let name = document.getElementById("project_name").value;
+  let status = document.getElementById("project_status").value;
   if (name == "") {
-    alert("Name must be filled out");
+    alert("please specify project name");
     return false;
   }
-
+  else if (status == "select") {
+    alert("please specify project status");
+  }
 }
-
 </script>

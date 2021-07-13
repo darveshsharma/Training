@@ -1,5 +1,4 @@
 
-<a class="back" " href ="/department"><-Back</a>
 
 <table style="width:100%">
 <caption><h1>Department Table</h1></caption>
@@ -8,13 +7,14 @@
   <th>Department Name</th>
   <th>Update</th>
   <th>Delete</th>
-  <% @departments.ids.each do |j| %>
+  <% @departments.each do |department| %>
 </tr>
   <tr>
   
     
-    <td > <%= @departments.find(j).name %> </td>
-        <td><a href="/department/<%= j %>/edit">edit</a></td>
-        <td><a data-confirm="Are you sure? You wanna delete data of <%= @departments.find(j).name %>" rel="nofollow" data-method="delete" href="/department/<%= j %>/delete">delete</a></td>
+    <td > <%= department.name %> </td>
+        <td><%= link_to "edit", department_path(department.id) , method: :get %></td>
+        <td><%= link_to "Delete", department_path(department.id) , method: :delete, data: {confirm: 'Are you sure?'} %></td></td>
   </tr>
   <% end %>
+</table>

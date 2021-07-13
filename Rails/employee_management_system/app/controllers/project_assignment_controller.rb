@@ -5,8 +5,11 @@ class ProjectAssignmentController < ApplicationController
 
   def create
     @assignment = ProjectAssignment.new(assignment_params)
-    @assignment.save
-    redirect_to '/assignments'
+    if @assignment.save
+      redirect_to '/assignments'
+    else
+      redirect_to '/assignment'
+    end
   end
 
   def assignment_show

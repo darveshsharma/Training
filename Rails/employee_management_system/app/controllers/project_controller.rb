@@ -7,8 +7,11 @@ class ProjectController < ApplicationController
   end
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to '/projects'
+    if @project.save 
+      redirect_to '/projects'
+    else 
+      redirect_to '/project'
+    end
   end
 
   def edit_project

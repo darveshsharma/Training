@@ -1,6 +1,6 @@
 <h1 style="margin-left: 39%;">Employee Entry</h1>
 
-<%= form_for @employee, html: { name: 'myForm', onclick: 'return validateForm();' } do |f| %>
+<%= form_for @employee do |f| %>
   <%= f.label :name, "Name:" %>
   <%= f.text_field :name%>
   <%= f.label :last_name, "Last Name:" %>
@@ -15,16 +15,33 @@
   <%= f.label :doj, "Date of joining:" %> <br><br>
   <%= f.date_field :doj %><br><br><br>
   <%= f.label :department_id, "Enter Department Name:" %>
-  <%= f.select :department_id , Department.order(:id).ids.map {|i| [Department.find(i).name,i]}%> 
-  <%= f.submit "Create" %>
+  <%= f.select :department_id , [['select'], Department.order(:id).ids.map {|i| [Department.find(i).name,i]}].flatten(1) %> 
+  <%= f.submit "Create" , id: "create" %>
 <% end %>
 
-<script>function validateForm() {
-  let name = document.forms["myForm"]["employee[name]"].value;
+<script>
+document.getElementById("create").addEventListener("click", validateForm);
+
+function validateForm(){
+  let name = document.getElementById("employee_name").value;
+  let dob = document.getElementById("employee_dob").value;
+  let doj = document.getElementById("employee_doj").value;
+  let dept_id = document.getElementById("employee_department_id").value;
   if (name == "") {
     alert("Name must be filled out");
     return false;
   }
+  else if (dob == "") {
+    alert("date of birth must be filled out");
+    return false;
+  }
+  else if (doj == "") {
+    alert("date of joining must be filled out");
+    return false;
+  }
+  else if (dept_id == "select") {
+    alert("please specify department name");
+    return false; 
+  }
 }
-
 </script>

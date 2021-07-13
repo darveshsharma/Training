@@ -2,8 +2,25 @@
 
 <%= form_for @assignment do |f| %>
   <%= f.label :employee_id, "Select Employee:" %>
-  <%= f.select :employee_id , Employee.order(:id).ids.map {|i| [Employee.find(i).name,i]}%>
+  <%= f.select :employee_id , [['select'], Employee.order(:id).ids.map {|i| [Employee.find(i).name,i]}].flatten(1) %>
   <%= f.label :project_id, "Select Project:" %>
-  <%= f.select :project_id , Project.order(:id).ids.map {|i| [Project.find(i).name,i]}%>
-  <%= f.submit "Assign" %>
+  <%= f.select :project_id , [['select'], Project.order(:id).ids.map {|i| [Project.find(i).name,i]}].flatten(1)%>
+  <%= f.submit "Assign" , id: "create"%>
 <% end %>
+
+<script>
+document.getElementById("create").addEventListener("click", (event) => validateForm());
+
+function validateForm(){
+  let emp_id = document.getElementById("project_assignment_employee_id").value;
+  let project_id = document.getElementById("project_assignment_project_id").value;
+  if (emp_id == "select") {
+    alert("please specify employee name");
+    return false; 
+  }
+  else if (project_id == "select") {
+    alert("please specify project name");
+    return false; 
+  }
+}
+</script>
