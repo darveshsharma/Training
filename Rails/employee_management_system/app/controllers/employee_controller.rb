@@ -4,9 +4,15 @@ class EmployeeController < ApplicationController
   end
   def show_record
     @count = Employee.count
-    @pages=(@count/2.0).ceil
+    @pages = (@count/2.0).ceil
     @page = params.fetch(:page, 0).to_i
-    @employees= Employee.offset(@page*2).limit(2)
+    @employees = Employee.offset(@page*2).limit(2)
+    id = params.fetch(:mail,0).to_i
+    if id > 0
+      EmployeeMailer.with(employee: id).welcome_email.deliver
+      redirect_to '/employees'
+    end
+
   end
   def create
     @employee = Employee.new(employee_params)

@@ -1,4 +1,4 @@
-<%= link_to "Back", home_path %>
+<%= link_to "Back", home_path , :class =>"back"%>
 
 <table style="width:100%">
 <caption><h1>Employee Table</h1></caption>
@@ -9,7 +9,9 @@
   <th>Gender</th>
   <th>Date Of Birth</th>
   <th>Date Of Joining</th>
+  <th>Email</th>
   <th>Department Name</th>
+  <th>Send Mail</th>
   <th>Update</th>
   <th>Delete</th>
 </tr>
@@ -21,19 +23,21 @@
   <td><%= employee.gender %></td>
   <td><%= employee.dob %></td>
   <td><%= employee.doj %></td>
+  <td><%= employee.email %></td>
   <% if  employee.department %>
     <td><%= employee.department.name%></td>
   <% else %>
     <td>To Be Deleted</td>
   <% end %>
+  <td><%= link_to "send", employees_path(mail: employee.id) %></td>
   <td><%= link_to "edit", employee_path(employee) , method: :put %></td>
   <td><%= link_to "Delete", employee_path(employee) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
 </tr>
 <%end%>
 </table>
 
-<div>
+<div class = "page"> 
   <% (1..@pages).each do |page_no| %> 
-    <%= link_to page_no, employees_path(page: page_no-1) %>
+    <%= link_to page_no, employees_path(page: page_no-1) , :class => "atag" %>
   <%end%>
 </div>
