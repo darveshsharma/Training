@@ -33,7 +33,7 @@
 </table>
 
 <div>
-  <% for i in 1..@pages %> 
-    <%= link_to i, employees_path(page: i-1) %>
+  <% (1..@pages).each do |page_no| %> 
+    <%= link_to page_no, employees_path(page: page_no-1) %>
   <%end%>
 </div>

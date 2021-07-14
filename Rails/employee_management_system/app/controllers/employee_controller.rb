@@ -3,11 +3,10 @@ class EmployeeController < ApplicationController
     @employee = Employee.new
   end
   def show_record
-    @employees =Employee.all
-    @pages=@employees.size/2
+    @count = Employee.count
+    @pages=(@count/2.0).ceil
     @page = params.fetch(:page, 0).to_i
     @employees= Employee.offset(@page*2).limit(2)
-    
   end
   def create
     @employee = Employee.new(employee_params)
