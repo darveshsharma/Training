@@ -13,7 +13,7 @@
   <th>Update</th>
   <th>Delete</th>
 </tr>
-<% @employees.each do |employee| %>
+<% @employees.order(:id).each do |employee| %>
 <tr>
   <td><%= employee.id %> </td>
   <td><%= employee.name %></td>
@@ -31,3 +31,9 @@
 </tr>
 <%end%>
 </table>
+
+<div>
+  <% for i in 1..@pages %> 
+    <%= link_to i, employees_path(page: i-1) %>
+  <%end%>
+</div>
