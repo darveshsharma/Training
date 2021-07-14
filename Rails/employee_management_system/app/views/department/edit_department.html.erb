@@ -1,9 +1,9 @@
-<h1 style="margin-left: 39%;">New Department Updation</h1>
+<h1 style="margin-left: 39%;">Department Updation</h1>
 
 <%= form_for @department, html: { name: 'dform', onclick: 'return validateForm();' } do |f| %>
   <%= f.label :name, "Name:"%>
   <%= f.text_field :name%>
-  <%= f.submit "Create" %>
+  <%= f.submit "Update" %>
 <% end %>
 
 

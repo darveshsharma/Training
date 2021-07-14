@@ -1,4 +1,4 @@
-<a class="back" href ="/project"><-Back</a>
+<%= link_to "Back", home_path %>
 
 <table style="width:100%">
 <caption><h1>Project Record</h1></caption>
@@ -9,12 +9,13 @@
   <th>Update</th>
   <th>Delete</th>
 </tr>
-<% @projects.order(:id).ids.each do |i| %>
+<% @projects.order(:id).each do |project| %>
 <tr>
-  <td><%= @projects.find(i).name %></td>
-  <td><%= @projects.find(i).status %></td>
-  <td><%= @projects.find(i).deploying_date %></td>
-  <td><a href="/project/<%= i %>/edit">edit</a></td>
-  <td><a data-confirm="Are you sure? You wanna delete data of <%= @projects.find(i).name %>" rel="nofollow" data-method="delete" href="/project/<%= i %>/delete">delete</a></td>
+  <td><%= project.name %></td>
+  <td><%= project.status %></td>
+  <td><%= project.deploying_date %></td>
+  <td><%= link_to "edit", project_path(project) , method: :put %></td>
+  <td><%= link_to "Delete", project_path(project) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
 </tr>
 <%end%>
+</table>

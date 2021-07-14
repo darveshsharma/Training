@@ -1,4 +1,4 @@
-
+<%= link_to "Back", home_path %>
 
 <table style="width:100%">
 <caption><h1>Department Table</h1></caption>
@@ -13,8 +13,8 @@
   
     
     <td > <%= department.name %> </td>
-        <td><%= link_to "edit", department_path(department.id) , method: :get %></td>
-        <td><%= link_to "Delete", department_path(department.id) , method: :delete, data: {confirm: 'Are you sure?'} %></td></td>
+        <td><%= link_to "edit", department_path(department) , method: :put %></td>
+        <td><%= link_to "Delete", department_path(department.id) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
   </tr>
   <% end %>
 </table>

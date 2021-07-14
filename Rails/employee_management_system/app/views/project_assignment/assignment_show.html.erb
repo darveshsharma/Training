@@ -1,14 +1,14 @@
-<a class="back" " href ="/assignment"><-Back</a>
-
+<%= link_to "Back", home_path %>
 <table style="width:100%">
 <caption><h1>Assignment Table</h1></caption>
 <tr>
   <th>Employee Name</th>
   <th>Assigned projects</th>
 </tr>
-  <% @assignments.ids.each do |i| %>
+  <% @assignments.each do |assignment| %>
   <tr>
-  <td><%= @assignments.find(i).employee.name %></td>
-  <td><%= @assignments.find(i).project.name %></td>
+  <td><%= assignment.employee.name %></td>
+  <td><%= assignment.project.name %></td>
   </tr>
   <% end %>
+</table>

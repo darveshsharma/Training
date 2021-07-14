@@ -20,7 +20,7 @@ class DepartmentController < ApplicationController
   
   def update_department
     @department = Department.find(params[:id])
-    @department.update(name: params[:departmant][:name])
+    @department.update(name: params[:department][:name])
     redirect_to '/departments'
   end
   

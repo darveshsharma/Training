@@ -13,14 +13,14 @@
   <body>
 
   <div class="navbar">
-  <a href="/home">Home</a>
+  <%= link_to "Home", home_path %>
   <div class="dropdown">
     <button class="dropbtn">Employee 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/employee">Create</a>
-      <a href="/employees">Show Records</a>
+      <%= link_to "Create", employee_path %>
+      <%= link_to "Show Records", employees_path %>
     </div>
   </div>
   <div class="dropdown">
@@ -28,8 +28,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/department">Create</a>
-      <a href="/departments">Show Records</a>
+    <%= link_to "Create", department_path %>
+    <%= link_to "Show Records", departments_path %>
     </div>
   </div>
   <div class="dropdown">
@@ -37,8 +37,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/project">Create</a>
-      <a href="/projects">Show Records</a>
+    <%= link_to "Create", project_path %>
+    <%= link_to "Show Records", projects_path %>
     </div>
   </div> 
   <div class="dropdown">
@@ -46,8 +46,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/assignment">Create</a>
-      <a href="/assignments">Show Records</a>
+    <%= link_to "Create", assignment_path %>
+    <%= link_to "Show Records", assignments_path %>
     </div>
   </div> 
 </div>
