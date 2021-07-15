@@ -32,7 +32,7 @@
   <td><%= link_to "edit", employee_path(employee) , method: :put %></td>
   <td><%= link_to "Delete", employee_path(employee) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
   <td><%= fields_for "employees[]", employee do |f| %>
-    <%= f.check_box :active, {multiple: true}, 1, nil %>
+    <%= link_to (f.check_box :active, {}, true, false ) ,employees_path(check: employee.id)  %>
       <% end %>
   </td>
 </tr>
@@ -44,4 +44,5 @@
   <% (1..@pages).each do |page_no| %> 
     <%= link_to page_no, employees_path(page: page_no-1) , :class => "atag" %>
   <%end%>
+
 </div>
