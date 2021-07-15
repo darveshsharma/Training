@@ -11,9 +11,8 @@
   <th>Date Of Joining</th>
   <th>Email</th>
   <th>Department Name</th>
-  <th>Send Mail</th>
-  <th>Update</th>
-  <th>Delete</th>
+  <th colspan= "3" >Action</th>
+  <th>Active</th>
 </tr>
 <% @employees.order(:id).each do |employee| %>
 <tr>
@@ -32,7 +31,12 @@
   <td><%= link_to "send", employees_path(mail: employee.id) %></td>
   <td><%= link_to "edit", employee_path(employee) , method: :put %></td>
   <td><%= link_to "Delete", employee_path(employee) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <td><%= fields_for "employees[]", employee do |f| %>
+    <%= f.check_box :active, {multiple: true}, 1, nil %>
+      <% end %>
+  </td>
 </tr>
+
 <%end%>
 </table>
 
