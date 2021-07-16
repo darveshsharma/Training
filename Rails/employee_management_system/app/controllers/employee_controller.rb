@@ -3,11 +3,11 @@ class EmployeeController < ApplicationController
     @employee = Employee.new
   end
   def show_record
-    @count = Employee.count
-    @pages = (@count/2.0).ceil
-    @page = params.fetch(:page, 0).to_i
-    @employees = Employee.offset(@page*2).limit(2)
-    # @employees = Employee.paginate(page: params[:page] , per_page: 2)
+    # @count = Employee.count
+    # @pages = (@count/2.0).ceil
+    # @page = params.fetch(:page, 0).to_i
+    # @employees = Employee.offset(@page*2).limit(2)
+    @employees = Employee.paginate(:page => params[:page] , :per_page => 2)
     id = params.fetch(:mail,0).to_i
     if id > 0
       EmployeeMailer.with(employee: id).welcome_email.deliver

@@ -39,10 +39,4 @@
 
 <%end%>
 </table>
-
-<div class = "page"> 
-  <% (1..@pages).each do |page_no| %> 
-    <%= link_to page_no, employees_path(page: page_no-1) , :class => "atag" %>
-  <%end%>
-
-</div>
+<%= will_paginate @employees, class: "page" %>
