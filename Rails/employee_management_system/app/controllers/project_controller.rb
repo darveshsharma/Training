@@ -6,8 +6,14 @@ class ProjectController < ApplicationController
     @projects = Project.all 
   end
   def create
-    @project = Project.new(project_params)
-    if @project.save 
+    # @project = Project.new(project_params)
+    # if @project.save 
+    #   redirect_to '/projects'
+    # else 
+    #   redirect_to '/project'
+    # end
+    project = CreateProjectService.new(project_params[:name], project_params[:status], project_params[:deploying_date]).call
+    if project 
       redirect_to '/projects'
     else 
       redirect_to '/project'
