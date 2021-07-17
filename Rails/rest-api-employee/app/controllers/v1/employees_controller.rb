@@ -1,22 +1,22 @@
 module V1
   class EmployeesController < ApplicationController
     def index
-      managers = Manager.all.includes(:employees)
+      employees = Employee.all.includes(:manager)
         
       render json: {
-        data: ActiveModelSerializers::SerializableResource.new(managers, each_serializer: ManagerSerializer),
-        message: ['Manager list fetched successfully'],
+        data: ActiveModelSerializers::SerializableResource.new(employees, each_serializer: EmployeeSerializer),
+        message: ['Employee list fetched successfully'],
         status: 200,
         type: 'Success'
       }
     end
   
     def show
-      manager = Manager.find(params[:id])
+      employee = Employee.find(params[:id])
         
       render json: {
-        data: ActiveModelSerializers::SerializableResource.new(manager, serializer: ManagerSerializer),
-        message: ['Manager profile fetched successfully'],
+        data: ActiveModelSerializers::SerializableResource.new(employee, serializer: EmployeeSerializer),
+        message: ['Employee profile fetched successfully'],
         status: 200,
         type: 'Success'
       }
