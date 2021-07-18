@@ -11,6 +11,8 @@ class DepartmentController < ApplicationController
   def create
     @department = Department.new(department_params)
     @department.save
+    id = department_params(:id)
+    DepartmentWorker.perform_async()
     redirect_to '/departments'
   end
 

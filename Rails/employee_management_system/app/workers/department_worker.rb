@@ -1,7 +1,8 @@
 class DepartmentWorker
   include Sidekiq::Worker
 
-  def perform(name)
-    puts name
+  def perform()
+    Rails.application.load_seed
+    puts "Data Added Using Seeds"
   end
 end
