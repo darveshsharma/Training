@@ -18,6 +18,12 @@
   <%= f.date_field :doj %><br><br><br>
   <%= f.label :department_id, "Enter Department Name:" %>
   <%= f.select :department_id , [['select'], Department.order(:id).ids.map {|i| [Department.find(i).name,i]}].flatten(1) %> 
+  <%= form_for :nominee do |form| %>
+    <%= form.label :name, "Nominee Name:" %>
+    <%= form.text_field :name%>
+    <%= form.label :contact_number, "Nominee Contact:" %>
+    <%= form.text_field :contact_number %>
+  <%end>
   <%= f.submit "Create" , id: "create" %>
 <% end %>
 

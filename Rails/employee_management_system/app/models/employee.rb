@@ -1,6 +1,7 @@
 class Employee < ApplicationRecord
     belongs_to :department
     has_one :nominee
+    accepts_nested_attributes_for :nominee
     has_many :project_assignments
     has_many :projects, through: :project_assignments
     has_many :comments, as: :feedback
