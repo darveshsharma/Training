@@ -31,7 +31,7 @@
   <td><%= link_to "send", employees_path(mail: employee.id) %></td>
   <td><%= link_to "edit", employee_path(employee) , method: :put %></td>
   <td><%= link_to "Delete", employee_path(employee) , method: :delete, data: {confirm: 'Are you sure?'} %></td>
-  <td><%= fields_for "employees[]", employee do |f| %>
+  <td><%= fields_for "employees[]", employee, remote: true do |f| %>
     <%= link_to (f.check_box :active, {}, true, false ) ,employees_path(check: employee.id)  %>
       <% end %>
   </td>

@@ -18,8 +18,10 @@ class EmployeeController < ApplicationController
     if checkbox > 0
       if Employee.find(checkbox).active
         Employee.find(checkbox).update(active: false)
+        redirect_to '/employees'
       else
         Employee.find(checkbox).update(active: true)
+        redirect_to '/employees'
       end
     end
   end
