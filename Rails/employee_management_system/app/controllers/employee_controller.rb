@@ -1,6 +1,7 @@
 class EmployeeController < ApplicationController
   def employee_page
     @employee = Employee.new
+    @employee.build_nominee
   end
   def show_record
     # @count = Employee.count
@@ -37,7 +38,7 @@ class EmployeeController < ApplicationController
   
   def update_employee
     @employee = Employee.find(params[:id])
-    @employee.update(name: params[:employee][:name], last_name: params[:employee][:last_name], gender: params[:employee][:gender] , dob: params[:employee][:dob], doj: params[:employee][:doj])
+    @employee.update(name: params[:employee][:name], last_name: params[:employee][:last_name], gender: params[:employee][:gender] , dob: params[:employee][:dob], email: params[:employee][:email])
     redirect_to '/employees'
   end
   
@@ -49,8 +50,8 @@ class EmployeeController < ApplicationController
   
   def employee_params
     params.require(:employee).permit(
-      :name, :last_name, :gender, :dob, :doj , :department_id
-      nominee_attributes: [ :id, :name, :contact_number])
+      :name, :last_name, :gender, :dob, :doj , :department_id, :email,
+      nominee_attributes: [:id, :name, :contact_number])
   end
 
 end
