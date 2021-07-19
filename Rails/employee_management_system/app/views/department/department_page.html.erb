@@ -3,17 +3,18 @@
 <%= form_for @department, html: { name: 'dform', onclick: 'return validateForm();' } do |f| %>
   <%= f.label :name, "Name:" %>
   <%= f.text_field :name%>
-  <%= f.submit "Create" %>
+  <%= f.submit "Create" ,id: "create" %>
 <% end %>
 
 
 <script>
-function validateForm() {
-  let dname = document.forms["dform"]["department[name]"].value;
-  if (dname == "") {
+document.getElementById("create").addEventListener("click", validateForm);
+
+function validateForm(){
+  let name = document.getElementById("department_name").value;
+  if (name == "") {
     alert("Name must be filled out");
     return false;
   }
 }
-
 </script>
